@@ -1,0 +1,16 @@
+package pokemoncorp.src.referentiel;
+
+public abstract class Attaque {
+
+    protected final TypePokemon type;
+    protected final int degats;
+
+    public TypePokemon getType() {
+        return type;
+    }
+
+    public int getDegats() {
+        return degats;
+    }
+
+}
