@@ -1,6 +1,6 @@
 @startuml
 
-package "com.pokemoncorp.referentiel"{
+package "pokemoncorp.src.referentiel"{
 
 	class API {
 		- pokemons : HashMap<int,Pokemon>
@@ -90,7 +90,7 @@ package "com.pokemoncorp.referentiel"{
 	
 }
 
-package "com.pokemoncorp.module_entrainement"{
+package "pokemoncorp.src.module_entrainement"{
 
 	class Simulation{
 	
@@ -143,10 +143,6 @@ package "com.pokemoncorp.module_entrainement"{
 		+ effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
 		+ effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2) : void
 	}
-	
-	enum TypeArene{
-	
-	}
 
 }
 
@@ -164,15 +160,14 @@ Pokemon *--> Attaque
 TypePokemon "1..1" <--o Attaque
 TypePokemon "1..1" <--o Pokemon
 
-Simulation --> TypeArene
-TypeArene "1..1" <--o Arene
+Simulation *--> "0..n" Arene
 Arene <|-- Prairie
 Arene <|-- Volcan
 Arene <|-- MareAcide
 
 Simulation --> API
 Simulation --> Combat
-Combat *--> "1..1" Arene
+Combat o--> "1..1" Arene
 
 Combat o--> "2..2" Pokemon
 
