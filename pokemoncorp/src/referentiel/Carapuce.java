@@ -1,6 +1,6 @@
-package referentiel;
+package pokemoncorp.src.referentiel;
 
-public class Carapuce extends Pokemon{
-    Carapuce(){
+public class Carapuce extends Pokemon {
+    Carapuce() {
     }
 }
