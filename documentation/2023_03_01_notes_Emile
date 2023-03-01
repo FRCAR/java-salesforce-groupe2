@@ -13,7 +13,7 @@ Questions :
 
 - Visibilité en lecture de Pokemon => oui. Car ici l'API est "proche". Sinon on importerait des classes, etc.
 
-- TypeArene ? Enum
+- TypeArene ? => collection dans Simulation
 
 - Bonus des attaque dans un attribut static => ok, cf syntaxe ci-dessous :
 
