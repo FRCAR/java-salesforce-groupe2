@@ -1,5 +1,8 @@
 package pokemoncorp.src.referentiel;
 
+/**
+ * Dev Class to test Attaque.
+ */
 public class TestAttaque {
 
     public static void main(String[] args) {

@@ -2,6 +2,11 @@ package pokemoncorp.src.referentiel;
 
 import java.util.HashMap;
 
+/**
+ * Abstract class. Children initializes degats and type.
+ * Static attribute tableBonus stores the type weaknessed and strength
+ * A bonus can be accessed with getBonus(TypePokemon typePokemonCible)
+ */
 public abstract class Attaque {
 
     protected static final int DEFAULT_BONUS = 100;
@@ -40,6 +45,11 @@ public abstract class Attaque {
         tableBonus.get(TypePokemon.FEU).put(TypePokemon.FEU, 100);
     }
 
+    public Attaque(int degats, TypePokemon type) {
+        this.degats = degats;
+        this.type = type;
+    }
+
     public TypePokemon getType() {
         return type;
     }
@@ -48,11 +58,14 @@ public abstract class Attaque {
         return degats;
     }
 
-    public Attaque(int degats, TypePokemon type) {
-        this.degats = degats;
-        this.type = type;
-    }
-
+    /**
+     * get the bonus of this attaque against a
+     * pokemon of the specified type
+     * If the couple of types is unknown, returns a default value
+     *
+     * @param typePokemonCible : the TypePokemon of the targeted pokemon
+     * @return bonus multiplier in percentage
+     */
     public int getBonus(TypePokemon typePokemonCible) {
         if (getTableBonus().containsKey(this.type)) {
             if (getTableBonus().get(this.type).containsKey(typePokemonCible)) {
