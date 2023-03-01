@@ -1,0 +1,175 @@
+@startuml
+
+package "pokemoncorp.src.referentiel"{
+
+	class API {
+		- pokemons : HashMap<int,Pokemon>
+		
+		+ API()
+		+ getAllPokemon() : HashMap<Pokemon>
+		+ getPokemonByID(int id) : Pokemon
+		+ updatePokemon(Pokemon pokemon, int addedExperience) : void
+	}
+	
+	abstract Pokemon{
+		- {static} nbPokemonCrees : int
+		# id : final int
+		# type : final TypePokemon
+		# experience : int
+		# ptDeVieMax : final int
+		# ptDeVie : int
+		# attaque : final Attaque
+		
+		# {static} incrementNbPokemonCrees() : void
+		+ {static} getNbPokemonCrees() : int
+		+ getId() : int
+		+ getType() : TypePokemon
+		+ getExperience() : int
+		~ setExperience(int experience) : void
+		+ getAttaque() : Attaque
+		+ getptDeVieMax() : int
+		+ getptDeVie() : int
+		+ setptDeVie(int ptDeVie) : int
+		+ attaquePokemon(Pokemon pokemonCible) : void
+		
+	}
+
+	class Salameche{
+	
+		~ Salameche()
+	}
+
+	class Racaillou{
+		
+		~ Racaillou()
+	}
+
+	class Roucoul{
+	
+		~Roucoul()
+	}
+
+	class Carapuce{
+
+		~Carapuce()
+	}
+
+	abstract Attaque{
+		- {static} tableBonus : HashMap<TypePokemon, HashMap<TypePokemon,Integer>>
+		- type : final TypePokemon
+		- degats : final int
+		
+		+ getType() : TypePokemon
+		+ getDegats() : int
+		+ getBonus(TypePokemon typePokemonCible) : Integer
+	}
+
+	class Plouf {
+	
+		~Plouf()
+	}
+
+	class Flameche {
+		
+		~Flameche()
+	}
+
+	class Battement {
+		
+		~Battement()
+	}
+
+	class Ecrasement {
+		
+		~Ecrasement()
+	}
+	
+	enum TypePokemon{
+	
+	}
+	
+}
+
+package "pokemoncorp.src.module_entrainement"{
+
+	class Simulation{
+	
+		+ {static} main() : void
+		- {static} displayAllPokemon() : void
+		- {static} displayAllPokemonSortedByXP(boolean croissant) : void
+		- {static} displayPokemonByID(int id) : void
+		- {static} displayAllArene() : void
+		- {static} lancerUnCombat() : void
+	}
+	
+	class Combat{
+		- final pokemonA : Pokemon
+		- final pokemonB : Pokemon
+		- final arene : Arene
+	
+		+ Combat(Pokemon pokemonA, Pokemon pokemonB, Arene arene)
+		+ getPokemonA() : Pokemon
+		+ getPokemonB() : Pokemon
+		+ getArene() : Arene
+		+ lancerCombat() : void
+		- tourDeCombat() : boolean
+	}
+
+	abstract Arene{
+		# final type : TypeArene
+		
+		+ getType() : TypeArene
+		+ {abstract} <<abstract>> effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+		+ {abstract} <<abstract>> effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+	}
+
+	class Prairie {
+		
+		+ Prairie()
+		+ effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+		+ effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+	}
+
+	class Volcan {
+	
+		+ Volcan()
+		+ effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+		+ effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+	}
+
+	class MareAcide {
+		
+		+ MareAcide()
+		+ effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+		+ effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+	}
+
+}
+
+API o--> "0,n" Pokemon
+Pokemon <|-- Salameche
+Pokemon <|-- Racaillou
+Pokemon <|-- Roucoul
+Pokemon <|-- Carapuce
+Attaque <|-- Plouf
+Attaque <|-- Flameche
+Attaque <|-- Battement
+Attaque <|-- Ecrasement
+Pokemon *--> Attaque
+
+TypePokemon "1..1" <--o Attaque
+TypePokemon "1..1" <--o Pokemon
+
+Simulation *--> "0..n" Arene
+Arene <|-- Prairie
+Arene <|-- Volcan
+Arene <|-- MareAcide
+
+Simulation --> API
+Simulation --> Combat
+Combat o--> "1..1" Arene
+
+Combat o--> "2..2" Pokemon
+
+
+@enduml
