@@ -10,9 +10,19 @@ public class Pokemon {
     protected final TypePokemon type;
     protected Attaque attaque;
 
-    // métode qui incrémente le nombre de Pokémon crées
+    // constructeur de la classe Pokémon
+    public Pokemon(int id) {
+        this.id = id;
+    };
+
+    // définition de la métode qui incrémente le nombre de Pokémon crées
     public void incrementNbPokemonCrees() {
-        this.nbPokemonCrees += nbPokemonCrees;
+        this.nbPokemonCrees++;
+
+    }
+
+    // définition de la méthode attaquePokemon
+    public void attaquePokemon(Pokemon pokemonCible) {
 
     }
 
