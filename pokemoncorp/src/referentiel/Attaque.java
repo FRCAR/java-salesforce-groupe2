@@ -13,4 +13,9 @@ public abstract class Attaque {
         return degats;
     }
 
+    public Attaque(int degats, TypePokemon type) {
+        this.degats = degats;
+        this.type = type;
+    }
+
 }
