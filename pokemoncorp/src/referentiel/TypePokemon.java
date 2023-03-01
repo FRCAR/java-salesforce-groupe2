@@ -1,4 +1,4 @@
-package pokemoncorp.src.refentiel.TypePokemon;
+package referentiel;
 
 public enum TypePokemon {
     EAU, FEU, AIR, SOl;
