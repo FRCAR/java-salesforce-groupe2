@@ -10,6 +10,12 @@ public class Pokemon {
     protected final TypePokemon type;
     protected Attaque attaque;
 
+    // métode qui incrémente le nombre de Pokémon crées
+    public void incrementNbPokemonCrees() {
+        this.nbPokemonCrees += nbPokemonCrees;
+
+    }
+
     public int getNbPokemonCrees() {
         return nbPokemonCrees;
     }
