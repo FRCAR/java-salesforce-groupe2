@@ -9,10 +9,6 @@ public abstract class Volcan extends Arene {
 
     @Override
     public void effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2){
+        //perte de 20pts de vie
     };
-
-    @Override
-    public void effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2){
-    };
-
 }
