@@ -116,7 +116,6 @@ package "pokemoncorp.src.module_entrainement"{
 	}
 
 	abstract Arene{
-		# final type : TypeArene
 		
 		+ getType() : TypeArene
 		+ {abstract} <<abstract>> effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
