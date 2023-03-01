@@ -1,7 +1,7 @@
 package pokemoncorp.src.entrainement;
 
-import referentiel.Pokemon;
-import referentiel.TypePokemon;
+import pokemoncorp.src.referentiel.Pokemon;
+import pokemoncorp.src.referentiel.TypePokemon;
 
 public abstract class Arene {
     protected final TypePokemon typePokemon;
