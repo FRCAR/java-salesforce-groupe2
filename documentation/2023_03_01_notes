@@ -1,0 +1,27 @@
+10h-11h : UML en solo
+11h-12h : mise en commun en groupe
+12h-12h30 : mise en commun de tous les groupes
+
+Jeudi aprem/soir : séance présentation/question/réponse
+Possibilité de finir vendredi, mais pas obligé.
+
+Avoir un respo Git.
+Chaque classe aura un respo.
+Un point toutes les 1h-1h30.
+
+Questions :
+
+- Visibilité en lecture de Pokemon => oui. Car ici l'API est "proche". Sinon on importerait des classes, etc.
+
+- TypeArene ? Enum
+
+- Bonus des attaque dans un attribut static => ok, cf syntaxe ci-dessous :
+
+class Attaque{
+	private static final HashMap<....> tableBonus= new HashMap<>();
+
+	static {
+	// Code ici
+	tableBonus.put(...);
+	}
+}

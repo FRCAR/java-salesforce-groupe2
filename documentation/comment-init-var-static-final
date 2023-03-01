@@ -1,0 +1,17 @@
+
+
+
+
+
+
+class Attaque{
+
+private static final HashMap<....> tableBonus= new HashMap<>();
+
+static {
+// Code ici
+tableBonus.put(...);
+}
+
+
+}
