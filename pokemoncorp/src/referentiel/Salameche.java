@@ -1,6 +1,6 @@
-package referentiel;
+package pokemoncorp.src.referentiel;
 
-public class Salameche extends Pokemon{
-    Salameche(){
+public class Salameche extends Pokemon {
+    Salameche() {
     }
 }

@@ -1,6 +1,6 @@
-package referentiel;
+package pokemoncorp.src.referentiel;
 
-public class Racaillou extends Pokemon{
-    Racaillou(){
+public class Racaillou extends Pokemon {
+    Racaillou() {
     }
 }

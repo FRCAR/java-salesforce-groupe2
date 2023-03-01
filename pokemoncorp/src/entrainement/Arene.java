@@ -1,4 +1,4 @@
-package entrainement;
+package pokemoncorp.src.entrainement;
 
 import referentiel.Pokemon;
 import referentiel.TypePokemon;
