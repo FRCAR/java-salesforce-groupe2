@@ -6,7 +6,9 @@ public class Pokemon {
     protected final int id;
     protected int experience;
     protected final int ptDeVieMax;
-    protected final int ptDeVie;
+    protected int ptDeVie;
+    protected final TypePokemon type;
+    protected Attaque attaque;
 
     public int getNbPokemonCrees() {
         return nbPokemonCrees;
@@ -34,6 +36,14 @@ public class Pokemon {
 
     public int getPtDeVie() {
         return ptDeVie;
+    }
+
+    public TypePokemon getType() {
+        return type;
+    }
+
+    public Attaque getAttaque() {
+        return attaque;
     }
 
 }
