@@ -18,4 +18,9 @@ public abstract class Attaque {
         this.type = type;
     }
 
+    public int getBonus(TypePokemon typePokemonCible) {
+
+        return 0;
+    }
+
 }
