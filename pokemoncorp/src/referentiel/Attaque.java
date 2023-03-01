@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public abstract class Attaque {
 
+    protected static final int DEFAULT_BONUS = 100;
     protected static final HashMap<TypePokemon, HashMap<TypePokemon, Integer>> tableBonus = new HashMap<TypePokemon, HashMap<TypePokemon, Integer>>();
     protected final TypePokemon type;
     protected final int degats;
@@ -53,8 +54,12 @@ public abstract class Attaque {
     }
 
     public int getBonus(TypePokemon typePokemonCible) {
-
-        return 0;
+        if (getTableBonus().containsKey(this.type)) {
+            if (getTableBonus().get(this.type).containsKey(typePokemonCible)) {
+                return getTableBonus().get(this.type).get(typePokemonCible);
+            }
+        }
+        return DEFAULT_BONUS;
     }
 
     public static HashMap<TypePokemon, HashMap<TypePokemon, Integer>> getTableBonus() {
