@@ -8,9 +8,9 @@ public abstract class Arene {
 
     public TypePokemon getTypePokemon() {
         return typePokemon;
-    }
+    };
 
-    public void effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2)
+    public abstract void effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2);
 
-    public void effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2)
+    public abstract void effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2);
 }
