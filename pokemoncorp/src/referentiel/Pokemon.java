@@ -1,4 +1,4 @@
-package referentiel;
+package pokemoncorp.src.referentiel;
 
 public class Pokemon {
 
