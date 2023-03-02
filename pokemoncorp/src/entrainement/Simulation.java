@@ -1,5 +1,6 @@
 package pokemoncorp.src.entrainement;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 import pokemoncorp.src.referentiel.Api;
@@ -7,11 +8,17 @@ import pokemoncorp.src.referentiel.Api;
 public class Simulation {
 
     private static Api api;
+    private static HashSet<Arene> arenes = new HashSet<>();
 
     public static void main(String[] args) {
 
         // initialisation API
         api = new Api();
+
+        // initialisations des arènes
+        // arenes.add(new Volcan());
+        // arenes.add(new Prairie());
+        // arenes.add(new MareAcide());
 
         System.out.println("\nBienvenue sur le module d'entraînement de pokémons !");
         System.out.println("(merci de ne pas prévenir les avocats de Nintendo)");
@@ -71,8 +78,17 @@ public class Simulation {
 
     /**
      * Récupère tous les pokemons existants dans le référentiel via l'API
+     * Puis affiche leur id + nom
      */
     private static void displayAllPokemon() {
+        System.out.println("\n-----------------------------------------------------------");
+        System.out.println("Affichage de tous les pokemons (id et nom) : ");
+        api.getAllPokemon()
+                .values()
+                .stream()
+                .forEach(poke -> {
+                    System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getNom());
+                });
 
     }
 
