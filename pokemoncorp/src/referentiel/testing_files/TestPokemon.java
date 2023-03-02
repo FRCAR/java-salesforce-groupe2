@@ -8,7 +8,7 @@ import pokemoncorp.src.referentiel.Pokemon;
 import pokemoncorp.src.referentiel.Racaillou;
 import pokemoncorp.src.referentiel.Roucoul;
 import pokemoncorp.src.referentiel.Salameche;
-import pokemoncorp.src.referentiel.TypePokemon;
+//import pokemoncorp.src.referentiel.TypePokemon;
 
 public class TestPokemon {
 
@@ -19,7 +19,11 @@ public class TestPokemon {
         listePokemons.add(new Roucoul("Pidgey"));
         listePokemons.add(new Carapuce("Raticate"));
         listePokemons.add(new Salameche("Kakuna"));
+        for (
 
+        Pokemon monPokemon : listePokemons) {
+            System.out.println(monPokemon.getPrenom());
+        }
     }
 
 }

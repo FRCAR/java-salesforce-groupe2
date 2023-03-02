@@ -3,7 +3,7 @@ package pokemoncorp.src.referentiel;
 public class Pokemon {
 
     private static int nbPokemonCrees = 0;
-    protected static int id;
+    protected int id;
     protected final String prenom;
     protected int experience;
     protected final int ptDeVieMax;
@@ -13,7 +13,7 @@ public class Pokemon {
 
     // constructeur de la classe Pokémon
     public Pokemon(String prenom, TypePokemon type, int ptVieMax, Attaque attaque) {
-        Pokemon.id = nbPokemonCrees;
+        this.id = nbPokemonCrees;
         this.prenom = prenom;
         this.type = type;
         this.ptDeVieMax = ptVieMax;
@@ -59,7 +59,7 @@ public class Pokemon {
         Pokemon.nbPokemonCrees = nbPokemonCrees;
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
