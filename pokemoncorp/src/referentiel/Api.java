@@ -19,8 +19,13 @@ public class Api {
         }
     };
 
+<<<<<<< HEAD
     // Api Constructor with no parameters
     Api() {
+=======
+    // Api Constructor with no parametrs
+    public Api() {
+>>>>>>> 8dbce5197559c1398784168bdf61f4e05e37cb09
 
     }
 

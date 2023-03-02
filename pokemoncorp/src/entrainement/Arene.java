@@ -13,7 +13,7 @@ public abstract class Arene {
         return nomClasse;
     }
 
-    public abstract void effetDebutCombat(Pokemon pk1, Pokemon pk2);
+    public abstract void effetDebutCombat(Pokemon pkA, Pokemon pkB);
 
-    public abstract void effetTourDeCombat(Pokemon pk1, Pokemon pk2);
+    public abstract void effetTourDeCombat(Pokemon pkA, Pokemon pkB);
 }

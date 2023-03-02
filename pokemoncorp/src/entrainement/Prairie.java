@@ -1,8 +1,19 @@
 package pokemoncorp.src.entrainement;
 
-public abstract class Prairie extends Arene {
+import pokemoncorp.src.referentiel.Pokemon;
+
+public class Prairie extends Arene {
     
     public Prairie(){
+        super("Prairie");
+    }
+
+    @Override
+    public void effetDebutCombat(Pokemon pkA, Pokemon pkB) {
+    }
+
+    @Override
+    public void effetTourDeCombat(Pokemon pkA, Pokemon pkB) {
     };
 
 }

@@ -11,6 +11,13 @@ Attaque + filles : Emile
 
 Simulation : 
 - main : Emile
+- displayAllPokemon : Emile
+- displayAllPokemonSortedByXP : TBD
+- displayPokemonByID : Emile
+- displayAllArene : TBD
+- lancerUnCombat : TBD
+
+
 
 Arene + filles : Nathalie
 
