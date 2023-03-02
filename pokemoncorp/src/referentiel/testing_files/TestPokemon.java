@@ -1,7 +1,11 @@
 package pokemoncorp.src.referentiel.testing_files;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import javax.print.attribute.HashAttributeSet;
 
 import pokemoncorp.src.referentiel.Carapuce;
 import pokemoncorp.src.referentiel.Pokemon;
@@ -14,7 +18,8 @@ public class TestPokemon {
 
     public static void main(String[] args) {
 
-        List<Pokemon> listePokemons = new ArrayList<Pokemon>();
+        Set<Pokemon> listePokemons = new HashSet<Pokemon>();
+        listePokemons.add(new Racaillou("Rattata"));
         listePokemons.add(new Racaillou("Rattata"));
         listePokemons.add(new Roucoul("Pidgey"));
         listePokemons.add(new Carapuce("Raticate"));

@@ -3,8 +3,11 @@ package pokemoncorp.src.entrainement;
 import java.util.HashSet;
 import java.util.Scanner;
 
+import javax.management.monitor.Monitor;
+
 import pokemoncorp.src.referentiel.Api;
 import pokemoncorp.src.referentiel.Pokemon;
+
 
 public class Simulation {
 
@@ -98,7 +101,20 @@ public class Simulation {
 
     }
 
+    /**
+     * Récupère tous les pokemons existants dans le référentiel via l'API
+     * triés par leur expérience
+     * Puis affiche leur id + nom
+     */
     private static void displayAllPokemonSortedByXP() {
+        System.out.println("\n-----------------------------------------------------------");
+        System.out.println("Affichage de tous les pokemons (id et nom) triés par expérience : ");
+        api.getAllPokemon()
+                .values()
+                .stream()
+                .forEach(poke -> {
+                    System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getPrenom() + " / Experience : " + poke.getExperience());
+                });
 
     }
 
@@ -111,38 +127,77 @@ public class Simulation {
 
         // Récupération de l'ID choisie par l'utilisateur
         System.out.print("Veuillez entrer l'ID du pokemon choisi : ");
-        int id = 0;
-        if (scan.hasNextInt()) {
-            id = scan.nextInt();
-        } else {
-            System.out.println("L'ID entré doit être un nombre.");
-            scan.next();
+        Pokemon lePokemon = getPokemonById();
+        if (lePokemon == null) {
             return;
         }
 
-        // Vérification de l'existence d'un pokemon avec cet ID
-        if (!api.getAllPokemon().containsKey(id)) {
-            System.out.println("Aucun pokemon ne correspond à l'ID : " + id);
-            return;
-        }
-
-        // On récupère le pokemon et on affiche ses attributs
-        Pokemon lePokemon = api.getPokemonByID(id);
+        // On affiche ses attributs
 
         System.out.println("Le Pokemon choisi s'appelle : " + lePokemon.getPrenom());
         System.out.println("Le Pokemon choisi est de type : " + lePokemon.getType());
+        System.out.println("Le Pokemon choisi est de l'espèce : " + lePokemon.getNomClass());
         System.out.println("Le Pokemon choisi a comme attaque : " + lePokemon.getAttaque().getNomClasse());
         System.out.println("Le Pokemon choisi a au maximum : " + lePokemon.getPtDeVieMax() + " HP");
         System.out.println("Le Pokemon choisi a : " + lePokemon.getExperience() + " XP");
 
     }
 
+    /**
+     * Affiche la liste des Arènes
+     */
     private static void displayAllArene() {
+        System.out.println("\n-----------------------------------------------------------");
+        System.out.println("Veuillez choisir une arène : ");
 
+        for (Arene monArene : arenes) {
+            System.out.println(monArene.getNomClasse());
+        }
     }
 
     private static void lancerUnCombat() {
+        System.out.println("\n-----------------------------------------------------------");
+        System.out.println("Combat de Pokemons ! ");
 
+        // Récupération des pokemons choisis par l'utilisateur
+        System.out.print("Veuillez entrer l'ID du premier pokemon choisi : ");
+        Pokemon pokemon1 = getPokemonById();
+        if (pokemon1 == null) {
+            return;
+        }
+
+        System.out.print("Veuillez entrer l'ID du second pokemon choisi : ");
+        Pokemon pokemon2 = getPokemonById();
+        if (pokemon2 == null) {
+            return;
+        }
+
+    }
+
+    /**
+     * Use API to get a pokemon via its ID given by the user
+     * Null if ID is not a number, or an unknown ID
+     *
+     * @return the selected Pokemon
+     */
+    private static Pokemon getPokemonById() {
+        int id = 0;
+        if (scan.hasNextInt()) {
+            id = scan.nextInt();
+        } else {
+            System.out.println("L'ID entré doit être un nombre.");
+            scan.next();
+            return null;
+        }
+
+        // Vérification de l'existence d'un pokemon avec cet ID
+        if (!api.getAllPokemon().containsKey(id)) {
+            System.out.println("Aucun pokemon ne correspond à l'ID : " + id);
+            return null;
+        }
+
+        // On récupère le pokemon et on affiche ses attributs
+        return api.getPokemonByID(id);
     }
 
 }
