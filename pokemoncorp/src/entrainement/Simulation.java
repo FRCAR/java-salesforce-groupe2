@@ -1,146 +1,164 @@
 package pokemoncorp.src.entrainement;
 
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
+
+import javax.management.monitor.Monitor;
 
 import pokemoncorp.src.referentiel.Api;
 import pokemoncorp.src.referentiel.Pokemon;
+import pokemoncorp.src.entrainement.Arene;
 
 public class Simulation {
 
     private static Api api;
     private static HashSet<Arene> arenes = new HashSet<>();
+  
 
     public static void main(String[] args) {
 
         // initialisation API
-        api = new Api();
+        //api = new Api();
 
         // initialisations des arènes
         arenes.add(new Volcan());
         arenes.add(new Prairie());
         arenes.add(new MareAcide());
 
-        System.out.println("\nBienvenue sur le module d'entraînement de pokémons !");
-        System.out.println("(merci de ne pas prévenir les avocats de Nintendo)");
+    //     System.out.println("\nBienvenue sur le module d'entraînement de pokémons !");
+    //     System.out.println("(merci de ne pas prévenir les avocats de Nintendo)");
 
-        mainLoop: while (true) {
-            // Affichage des options
-            System.out.println("\n-----------------------------------------------------------");
-            System.out.println("Veuillez entrez un nombre correspondant à l'option choisie :");
-            System.out.println("1. Afficher tous les pokemons");
-            System.out.println("2. Afficher tous les pokemons triés par niveau d'expérience");
-            System.out.println("3. Afficher un pokemon grace à son ID");
-            System.out.println("4. Afficher toutes les arènes");
-            System.out.println("5. Lancer un combat de pokemons");
-            System.out.println("6. Quitter ce magnifique module :'(");
+    //     mainLoop: while (true) {
+    //         // Affichage des options
+    //         System.out.println("\n-----------------------------------------------------------");
+    //         System.out.println("Veuillez entrez un nombre correspondant à l'option choisie :");
+    //         System.out.println("1. Afficher tous les pokemons");
+    //         System.out.println("2. Afficher tous les pokemons triés par niveau d'expérience");
+    //         System.out.println("3. Afficher un pokemon grace à son ID");
+    //         System.out.println("4. Afficher toutes les arènes");
+    //         System.out.println("5. Lancer un combat de pokemons");
+    //         System.out.println("6. Quitter ce magnifique module :'(");
 
-            // récupération du choix
-            Scanner scan = new Scanner(System.in);
-            System.out.print("Votre choix : ");
-            int option = 0;
-            if (scan.hasNextInt()) {
-                option = scan.nextInt();
-            }
-            scan.close();
+    //         // récupération du choix
+    //         Scanner scan = new Scanner(System.in);
+    //         System.out.print("Votre choix : ");
+    //         int option = 0;
+    //         if (scan.hasNextInt()) {
+    //             option = scan.nextInt();
+    //         }
+    //         scan.close();
 
-            // Vérification du choix
-            if (option < 1 || option > 6) {
-                System.out.println("Veuillez entrer un nombre entre 1 et 5.");
-                continue;
-            }
+    //         // Vérification du choix
+    //         if (option < 1 || option > 6) {
+    //             System.out.println("Veuillez entrer un nombre entre 1 et 5.");
+    //             continue;
+    //         }
 
-            // on lance la méthode correspondante
-            switch (option) {
-                case (1) -> {
-                    displayAllPokemon();
-                }
-                case (2) -> {
-                    displayAllPokemonSortedByXP();
-                }
-                case (3) -> {
-                    displayPokemonByID();
-                }
-                case (4) -> {
-                    displayAllArene();
-                }
-                case (5) -> {
-                    lancerUnCombat();
-                }
-                case (6) -> {
-                    System.out.println("Ciao !");
-                    break mainLoop;
-                }
-            }
+    //         // on lance la méthode correspondante
+    //         switch (option) {
+    //             case (1) -> {
+    //                 displayAllPokemon();
+    //             }
+    //             case (2) -> {
+    //                 displayAllPokemonSortedByXP();
+    //             }
+    //             case (3) -> {
+    //                 displayPokemonByID();
+    //             }
+    //             case (4) -> {
+    //                 displayAllArene();
+    //             }
+    //             case (5) -> {
+    //                 lancerUnCombat();
+    //             }
+    //             case (6) -> {
+    //                 System.out.println("Ciao !");
+    //                 break mainLoop;
+    //             }
+    //         }
 
-        }
+    //     }
 
+    // }
+
+    // /**
+    //  * Récupère tous les pokemons existants dans le référentiel via l'API
+    //  * Puis affiche leur id + nom
+    //  */
+    // private static void displayAllPokemon() {
+    //     System.out.println("\n-----------------------------------------------------------");
+    //     System.out.println("Affichage de tous les pokemons (id et nom) : ");
+    //     api.getAllPokemon()
+    //             .values()
+    //             .stream()
+    //             .forEach(poke -> {
+    //                 System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getNom());
+    //             });
+
+    // }
+
+    // private static void displayAllPokemonSortedByXP() {
+
+    // }
+
+    // /**
+    //  * Affiche les détails d'un pokemon, choisi par son id
+    //  * WIP
+    //  */
+    // private static void displayPokemonByID() {
+    //     System.out.println("\n-----------------------------------------------------------");
+    //     System.out.println("Affichage d'un pokemon : ");
+
+    //     // Récupération de l'ID choisie par l'utilisateur
+    //     Scanner scan = new Scanner(System.in);
+    //     System.out.print("Veuillez entrer l'ID du pokemon choisi : ");
+    //     int id = 0;
+    //     if (scan.hasNextInt()) {
+    //         id = scan.nextInt();
+    //     } else {
+    //         System.out.println("L'ID entré doit être un nombre.");
+    //         scan.close();
+    //         return;
+    //     }
+    //     scan.close();
+
+    //     // Vérification de l'existence d'un pokemon avec cet ID
+    //     if (!api.getAllPokemon().containsKey(id)) {
+    //         System.out.println("Aucun pokemon ne correspond à l'ID : " + id);
+    //         return;
+    //     }
+
+    //     //
+    //     Pokemon lePokemon = api.getPokemonByID(id);
+
+    //     System.out.println("Le Pokemon choisi s'appelle : " + lePokemon.getNom());
+    //     System.out.println("Le Pokemon choisi est de type : " + lePokemon.getType());
+    //     System.out.println("Le Pokemon choisi a comme attaque : " + lePokemon.getAttaque().getNomClasse());
+    //     System.out.println("Le Pokemon choisi a au maximum : " + lePokemon.getPtDeVieMax() + " HP");
+    //     System.out.println("Le Pokemon choisi a : " + lePokemon.getExperience() + " XP");
+
+    // }
+
+    //Récupère tous les noms des arènes
+    System.out.println("Veuillez choisir une arène : ");
+    Iterator<Arene> it = arenes.iterator();
+
+    while (it.hasNext()) {
+        Arene nomArene = it.next();
+        System.out.println(nomArene);
+       }
     }
 
-    /**
-     * Récupère tous les pokemons existants dans le référentiel via l'API
-     * Puis affiche leur id + nom
-     */
-    private static void displayAllPokemon() {
-        System.out.println("\n-----------------------------------------------------------");
-        System.out.println("Affichage de tous les pokemons (id et nom) : ");
-        api.getAllPokemon()
-                .values()
-                .stream()
-                .forEach(poke -> {
-                    System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getNom());
-                });
+    // private static void displayAllArene() {
+    //     System.out.println("\n-----------------------------------------------------------");
+    //     System.out.println("Affichage de toutes les arènes (nom) : ");
+    // }
+    // }
+    
+    // private static void lancerUnCombat() {
 
-    }
-
-    private static void displayAllPokemonSortedByXP() {
-
-    }
-
-    /**
-     * Affiche les détails d'un pokemon, choisi par son id
-     * WIP
-     */
-    private static void displayPokemonByID() {
-        System.out.println("\n-----------------------------------------------------------");
-        System.out.println("Affichage d'un pokemon : ");
-
-        // Récupération de l'ID choisie par l'utilisateur
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Veuillez entrer l'ID du pokemon choisi : ");
-        int id = 0;
-        if (scan.hasNextInt()) {
-            id = scan.nextInt();
-        } else {
-            System.out.println("L'ID entré doit être un nombre.");
-            scan.close();
-            return;
-        }
-        scan.close();
-
-        // Vérification de l'existence d'un pokemon avec cet ID
-        if (!api.getAllPokemon().containsKey(id)) {
-            System.out.println("Aucun pokemon ne correspond à l'ID : " + id);
-            return;
-        }
-
-        //
-        Pokemon lePokemon = api.getPokemonByID(id);
-
-        System.out.println("Le Pokemon choisi s'appelle : " + lePokemon.getNom());
-        System.out.println("Le Pokemon choisi est de type : " + lePokemon.getType());
-        System.out.println("Le Pokemon choisi a comme attaque : " + lePokemon.getAttaque().getNomClasse());
-        System.out.println("Le Pokemon choisi a au maximum : " + lePokemon.getPtDeVieMax() + " HP");
-        System.out.println("Le Pokemon choisi a : " + lePokemon.getExperience() + " XP");
-
-    }
-
-    private static void displayAllArene() {
-
-    }
-
-    private static void lancerUnCombat() {
-
-    }
+    // }
 
 }
