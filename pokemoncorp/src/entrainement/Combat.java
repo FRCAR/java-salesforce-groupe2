@@ -35,24 +35,47 @@ public class Combat {
 
     }
 
+    /**
+     * @return "1" si pokemon 1 gagne
+     * @return "2" si pokemon 2 gagne
+     * @return "0" si aucun pokemon ne gagne
+     */
     public int lancerCombat() {
-        int idGagant = 0;       
+        // Le combat commence
+        // application de l'effect unique de l'arène sur les deux pokemons
+        this.arene.effetDebutCombat(pokemon2, pokemon1);
+        int numeroGagant = 0;
 
         boolean combatEnCours = true;
         while (combatEnCours) {
-            // Le combat commence 
+            // application de l'effet permanent de l'arène sur les deux pokemons
+            // Gestion des cas où un des deux pokemons est mort (ou bien les deux meurent)
+            this.arene.effetTourDeCombat(pokemon2, pokemon1);
+            if (pokemon1.getPtDeVie() <= 0 && pokemon2.getPtDeVie() <= 0) {
+                System.out.println("Les deux pokémons sont morts à cause de l'effet de l'arène, ÉGALITÉ !");
+                combatEnCours = false;
+            } else if (pokemon1.getPtDeVie() <= 0) {
+                numeroGagant = 2;
+                System.out.println("Le pokémon 1 est mort à cause de l'effet de l'arène, Le pokémon 2 a gagné !");
+                combatEnCours = false;
+            } else if (pokemon2.getPtDeVie() <= 0) {
+                numeroGagant = 1;
+                System.out.println("Le pokémon 2 est mort à cause de l'effet de l'arène, Le pokémon 1 a gagné !");
+                combatEnCours = false;
+            }
+
             if (tourDeCombat()) {
                 // Cas ou le pokemon 1 est choisi aléatoirement pour attaquer en premier
-                
+
                 pokemon1.attaquePokemon(pokemon2);
                 if (pokemon2.getPtDeVie() <= 0) {
-                    idGagant = 1;
+                    numeroGagant = 1;
                     System.out.println("Le pokémon 2 est KO, Le pokémon 1 a gagné !");
                     combatEnCours = false;
                 } else {
                     pokemon2.attaquePokemon(pokemon1);
                     if (pokemon1.getPtDeVie() <= 0) {
-                        idGagant = 2;
+                        numeroGagant = 2;
                         System.out.println("Le pokémon 1 est KO, Le pokémon 2 a gagné !");
                         combatEnCours = false;
                     }
@@ -64,26 +87,24 @@ public class Combat {
             } else {
                 pokemon2.attaquePokemon(pokemon1);
                 if (pokemon1.getPtDeVie() <= 0) {
-                    idGagant = 2;
+                    numeroGagant = 2;
                     System.out.println("Le pokémon 1 est KO, Le pokémon 2 a gagné !");
                     combatEnCours = false;
                 } else {
                     pokemon1.attaquePokemon(pokemon2);
                     if (pokemon2.getPtDeVie() <= 0) {
-                        idGagant = 1;
+                        numeroGagant = 1;
                         System.out.println("Le pokémon 2 est KO, Le pokémon 1 a gagné !");
                         combatEnCours = false;
                     }
-                    
-                }
 
+                }
 
             }
 
         }
-    
-        return idGagant;
-    }   
-            
-            
+
+        return numeroGagant;
+    }
+
 }
