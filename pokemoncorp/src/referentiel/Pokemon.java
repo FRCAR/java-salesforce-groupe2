@@ -3,7 +3,7 @@ package pokemoncorp.src.referentiel;
 public class Pokemon {
 
     private int nbPokemonCrees = 0;
-    protected final int id;
+    protected static int id;
     protected final String prenom;
     protected int experience;
     protected final int ptDeVieMax;
@@ -13,7 +13,7 @@ public class Pokemon {
 
     // constructeur de la classe Pokémon
     public Pokemon(String prenom, TypePokemon type, int ptVieMax, Attaque attaque) {
-        this.id = nbPokemonCrees;
+        Pokemon.id = nbPokemonCrees;
         this.prenom = prenom;
         this.type = type;
         this.ptDeVieMax = ptVieMax;
@@ -30,8 +30,10 @@ public class Pokemon {
     }
 
     // ic on calcule le modificateur de dégat par attaque
+    // A rajouter --> vérifictaion si degat>0 a voir dans simulation si on appel
+    // reset PointdeVie
     public void ajoutDegat(int degat) {
-        this.ptDeVie = this.ptDeVie * (degat / 100);
+        this.ptDeVie = this.ptDeVie * Math.round(degat / 100);
     }
 
     // définition de la méthode attaquePokemon
@@ -57,7 +59,7 @@ public class Pokemon {
         this.nbPokemonCrees = nbPokemonCrees;
     }
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
