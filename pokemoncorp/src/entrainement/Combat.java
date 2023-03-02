@@ -34,6 +34,8 @@ public class Combat {
         this.arene = arene;
     }
 
+
+
     // construction de combat sans paramètres
     public Combat() {
 
@@ -44,8 +46,12 @@ public class Combat {
      * @return "pokemon2" si pokemon 2 gagne
      * @return "null" si aucun pokemon ne gagne
      */
+
     public Pokemon lancerCombat() {
         // Le combat commence
+        // initialiser l'hp des pokemons
+        pokemon1.resetPdtVie();
+        pokemon2.resetPdtVie();
         // application de l'effect unique de l'arène sur les deux pokemons
         this.arene.effetDebutCombat(pokemon2, pokemon1);
         Pokemon pokemonGagnant = null;
