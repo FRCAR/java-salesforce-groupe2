@@ -113,7 +113,8 @@ public class Simulation {
         api.getAllPokemon()
                 .values()
                 .stream()
-                .sorted(Comparator.comparingInt(Pokemon::getExperience))
+                .sorted(Comparator.comparingInt(Pokemon::getExperience)
+                .reversed())
                 .forEach(poke -> {
                     System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getPrenom() + " / Experience : " + poke.getExperience());
                 });
