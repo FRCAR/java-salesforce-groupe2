@@ -8,6 +8,9 @@ public class Combat {
     private Arene arene;
     private boolean tourDeCombat;
 
+    /*
+     * fonction qui choisi aléatoirement quel pokemon joueuera en premier
+     */
     public boolean tourDeCombat() {
         this.tourDeCombat = Math.random() > 0.5;
         return this.tourDeCombat;
@@ -31,7 +34,8 @@ public class Combat {
         this.arene = arene;
     }
 
-    Combat() {
+    // construction de combat sans paramètres
+    public Combat() {
 
     }
 
@@ -47,6 +51,7 @@ public class Combat {
         Pokemon pokemonGagnant = null;
 
         boolean combatEnCours = true;
+        // tant que le combat est en cours ...
         while (combatEnCours) {
             // application de l'effet permanent de l'arène sur les deux pokemons
             // Gestion des cas où un des deux pokemons est mort (ou bien les deux meurent)
@@ -54,16 +59,20 @@ public class Combat {
             if (pokemon1.getPtDeVie() <= 0 && pokemon2.getPtDeVie() <= 0) {
                 System.out.println("Les deux pokémons sont morts à cause de l'effet de l'arène, ÉGALITÉ !");
                 combatEnCours = false;
+                break;
             } else if (pokemon1.getPtDeVie() <= 0) {
                 pokemonGagnant = pokemon2;
                 System.out.println("Le pokémon 1 est mort à cause de l'effet de l'arène, Le pokémon 2 a gagné !");
                 combatEnCours = false;
+                break;
             } else if (pokemon2.getPtDeVie() <= 0) {
                 pokemonGagnant = pokemon1;
                 System.out.println("Le pokémon 2 est mort à cause de l'effet de l'arène, Le pokémon 1 a gagné !");
                 combatEnCours = false;
+                break;
             }
 
+            // Pile ou face (fonction aléatoire)
             if (tourDeCombat()) {
                 // Cas ou le pokemon 1 est choisi aléatoirement pour attaquer en premier
 
