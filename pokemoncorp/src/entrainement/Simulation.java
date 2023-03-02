@@ -10,8 +10,11 @@ public class Simulation {
 
     private static Api api;
     private static HashSet<Arene> arenes = new HashSet<>();
+    private static Scanner scan;
 
     public static void main(String[] args) {
+
+        scan = new Scanner(System.in);
 
         // initialisation API
         api = new Api();
@@ -23,8 +26,6 @@ public class Simulation {
 
         System.out.println("\nBienvenue sur le module d'entraînement de pokémons !");
         System.out.println("(merci de ne pas prévenir les avocats de Nintendo)");
-
-        Scanner scan = new Scanner(System.in);
 
         mainLoop: while (true) {
             // Affichage des options
@@ -42,6 +43,8 @@ public class Simulation {
             int option = 0;
             if (scan.hasNextInt()) {
                 option = scan.nextInt();
+            } else {
+                scan.next();
             }
 
             // Vérification du choix
@@ -90,7 +93,7 @@ public class Simulation {
                 .values()
                 .stream()
                 .forEach(poke -> {
-                    System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getNom());
+                    System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getPrenom());
                 });
 
     }
@@ -101,20 +104,19 @@ public class Simulation {
 
     /**
      * Affiche les détails d'un pokemon, choisi par son id
-     * WIP
      */
     private static void displayPokemonByID() {
         System.out.println("\n-----------------------------------------------------------");
         System.out.println("Affichage d'un pokemon : ");
 
         // Récupération de l'ID choisie par l'utilisateur
-        Scanner scan = new Scanner(System.in);
         System.out.print("Veuillez entrer l'ID du pokemon choisi : ");
         int id = 0;
         if (scan.hasNextInt()) {
             id = scan.nextInt();
         } else {
             System.out.println("L'ID entré doit être un nombre.");
+            scan.next();
             return;
         }
 
@@ -127,7 +129,7 @@ public class Simulation {
         // On récupère le pokemon et on affiche ses attributs
         Pokemon lePokemon = api.getPokemonByID(id);
 
-        System.out.println("Le Pokemon choisi s'appelle : " + lePokemon.getNom());
+        System.out.println("Le Pokemon choisi s'appelle : " + lePokemon.getPrenom());
         System.out.println("Le Pokemon choisi est de type : " + lePokemon.getType());
         System.out.println("Le Pokemon choisi a comme attaque : " + lePokemon.getAttaque().getNomClasse());
         System.out.println("Le Pokemon choisi a au maximum : " + lePokemon.getPtDeVieMax() + " HP");
