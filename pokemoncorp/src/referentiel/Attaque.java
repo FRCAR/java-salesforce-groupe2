@@ -81,7 +81,7 @@ public abstract class Attaque {
         return DEFAULT_BONUS;
     }
 
-    public static HashMap<TypePokemon, HashMap<TypePokemon, Integer>> getTableBonus() {
+    private static HashMap<TypePokemon, HashMap<TypePokemon, Integer>> getTableBonus() {
         return tableBonus;
     }
 
