@@ -110,6 +110,7 @@ package "pokemoncorp.src.entrainement"{
 		- {static} displayPokemonByID() : void
 		- {static} displayAllArene() : void
 		- {static} lancerUnCombat() : void
+		- {static} getPokemonById() : Pokemon
 	}
 	
 	class Combat{

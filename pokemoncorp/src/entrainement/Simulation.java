@@ -133,7 +133,6 @@ public class Simulation {
         }
 
         // On affiche ses attributs
-
         System.out.println("Le Pokemon choisi s'appelle : " + lePokemon.getPrenom());
         System.out.println("Le Pokemon choisi est de type : " + lePokemon.getType());
         System.out.println("Le Pokemon choisi est de l'espèce : " + lePokemon.getNomClass());
@@ -155,6 +154,13 @@ public class Simulation {
         }
     }
 
+    /**
+     * Lance un combat
+     * L'utilisateurice choisit successivement 2 pokemons
+     * Puis choisit une arène
+     * Appelle ensuite la classe Combat qui gère le combat en lui-même
+     * Le vainqueur gagne de l'expérience, via un appel de l'API.
+     */
     private static void lancerUnCombat() {
         System.out.println("\n-----------------------------------------------------------");
         System.out.println("Combat de Pokemons ! ");
@@ -172,6 +178,7 @@ public class Simulation {
             return;
         }
 
+        // Verification que les pokemon choisis sont distincts
         if (pokemon1 == pokemon2) {
             System.out.println("On est pas dans Fight Club, merci.");
             return;
@@ -193,7 +200,7 @@ public class Simulation {
             return;
         }
 
-        // Vérification de l'existence d'un pokemon avec cet ID
+        // Vérification de l'existence d'une arène avec ce numéro
         if (numArene < 0 || numArene > arenes.size() - 1) {
             System.out.println("Aucune arène ne correspond à ce numéro : " + numArene);
             return;
@@ -201,18 +208,22 @@ public class Simulation {
 
         Arene arene = arenes.get(numArene);
 
+        // On lance le combat
         Combat unCombat = new Combat(pokemon1, pokemon2, arene);
         Pokemon vainqueur = unCombat.lancerCombat();
+
+        // traitement du gain d'XP
         if (vainqueur != null) {
             Pokemon loser = vainqueur == pokemon1 ? pokemon2 : pokemon1;
             // calcul XP
             int experience = loser.getExperience() / 3;
             if (experience < 100) {
-                experience = 100;
+                experience = 100; // minimum de 100
             }
 
             System.out.println("Le vainqueur du combat, " + vainqueur.getPrenom()
                     + " gagne " + experience + " XP !");
+            // on met à jour le pokemon via l'API
             api.updatePokemon(vainqueur, experience);
         }
 
