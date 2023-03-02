@@ -3,7 +3,7 @@
 package "pokemoncorp.src.referentiel"{
 
 	class API {
-		- pokemons : HashMap<int,Pokemon>
+		- pokemons : HashMap<Integer,Pokemon>
 		
 		+ API()
 		+ getAllPokemon() : HashMap<Pokemon>
@@ -113,16 +113,17 @@ package "pokemoncorp.src.entrainement"{
 	}
 	
 	class Combat{
-		- final pokemonA : Pokemon
-		- final pokemonB : Pokemon
+		- final pokemon1 : Pokemon
+		- final pokemon2 : Pokemon
 		- final arene : Arene
+		- boolean tourDeCombat
 	
-		+ Combat(Pokemon pokemonA, Pokemon pokemonB, Arene arene)
-		+ getPokemonA() : Pokemon
-		+ getPokemonB() : Pokemon
+		+ Combat(Pokemon pokemon1, Pokemon pokemon2, Arene arene)
+		+ getpokemon1() : Pokemon
+		+ getpokemon2() : Pokemon
 		+ getArene() : Arene
 		+ lancerCombat() : void
-		- tourDeCombat() : boolean
+		+ tourDeCombat() : boolean
 	}
 
 	abstract Arene{
@@ -130,29 +131,29 @@ package "pokemoncorp.src.entrainement"{
 		
 		+ Arene(String nomClasse)
 		+ getNomClasse() : String
-		+ {abstract} <<abstract>> effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
-		+ {abstract} <<abstract>> effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+		+ {abstract} <<abstract>> effetDebutCombat(Pokemon pkA, Pokemon pkB) : void
+		+ {abstract} <<abstract>> effetTourDeCombat(Pokemon pkA, Pokemon pkB) : void
 	}
 
 	class Prairie {
 		
 		+ Prairie()
-		+ effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
-		+ effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+		+ effetDebutCombat(Pokemon pkA, Pokemon pkB) : void
+		+ effetTourDeCombat(Pokemon pkA, Pokemon pkB) : void
 	}
 
 	class Volcan {
 	
 		+ Volcan()
-		+ effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
-		+ effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+		+ effetDebutCombat(Pokemon pkA, Pokemon pkB) : void
+		+ effetTourDeCombat(Pokemon pkA, Pokemon pkB) : void
 	}
 
 	class MareAcide {
 		
 		+ MareAcide()
-		+ effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
-		+ effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2) : void
+		+ effetDebutCombat(Pokemon pkA, Pokemon pkB) : void
+		+ effetTourDeCombat(Pokemon pkA, Pokemon pkB) : void
 	}
 
 }
