@@ -13,6 +13,7 @@ public abstract class Attaque {
     protected static final HashMap<TypePokemon, HashMap<TypePokemon, Integer>> tableBonus = new HashMap<TypePokemon, HashMap<TypePokemon, Integer>>();
     protected final TypePokemon type;
     protected final int degats;
+    protected final String nomClasse;
 
     // code executed at initialization of class (first call ?)
     static {
@@ -45,13 +46,18 @@ public abstract class Attaque {
         tableBonus.get(TypePokemon.FEU).put(TypePokemon.FEU, 100);
     }
 
-    public Attaque(int degats, TypePokemon type) {
+    public Attaque(int degats, TypePokemon type, String nomClasse) {
         this.degats = degats;
         this.type = type;
+        this.nomClasse = nomClasse;
     }
 
     public TypePokemon getType() {
         return type;
+    }
+
+    public String getNomClasse() {
+        return nomClasse;
     }
 
     public int getDegats() {
@@ -75,7 +81,7 @@ public abstract class Attaque {
         return DEFAULT_BONUS;
     }
 
-    public static HashMap<TypePokemon, HashMap<TypePokemon, Integer>> getTableBonus() {
+    private static HashMap<TypePokemon, HashMap<TypePokemon, Integer>> getTableBonus() {
         return tableBonus;
     }
 

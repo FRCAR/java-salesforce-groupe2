@@ -11,8 +11,12 @@ public class Pokemon {
     protected Attaque attaque;
 
     // constructeur de la classe Pokémon
-    public Pokemon(int id) {
+    public Pokemon(int id, TypePokemon type, int ptVieMax, Attaque attaque) {
         this.id = id;
+        this.type = type;
+        this.ptDeVieMax = ptVieMax;
+        this.ptDeVie = ptVieMax;
+        this.attaque = attaque;
     };
 
     // définition de la métode qui incrémente le nombre de Pokémon crées
