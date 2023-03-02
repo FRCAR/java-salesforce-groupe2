@@ -2,6 +2,9 @@ package pokemoncorp.src.entrainement;
 
 import pokemoncorp.src.referentiel.Pokemon;
 
+/*
+* création de class Combat avec ses attributs
+*/
 public class Combat {
     private Pokemon pokemon1;
     private Pokemon pokemon2;
@@ -33,8 +36,6 @@ public class Combat {
         this.pokemon2 = pokemon2;
         this.arene = arene;
     }
-
-
 
     // construction de combat sans paramètres
     public Combat() {
@@ -68,12 +69,14 @@ public class Combat {
                 break;
             } else if (pokemon1.getPtDeVie() <= 0) {
                 pokemonGagnant = pokemon2;
-                System.out.println("Le pokémon 1 est mort à cause de l'effet de l'arène, Le pokémon 2 a gagné !");
+                System.out.println(pokemon1.getPrenom() + " est mort à cause de l'effet de l'arène, "
+                        + pokemon2.getPrenom() + " a gagné !");
                 combatEnCours = false;
                 break;
             } else if (pokemon2.getPtDeVie() <= 0) {
                 pokemonGagnant = pokemon1;
-                System.out.println("Le pokémon 2 est mort à cause de l'effet de l'arène, Le pokémon 1 a gagné !");
+                System.out.println(pokemon2.getPrenom() + " est mort à cause de l'effet de l'arène, "
+                        + pokemon1.getPrenom() + " a gagné !");
                 combatEnCours = false;
                 break;
             }
@@ -85,13 +88,15 @@ public class Combat {
                 pokemon1.attaquePokemon(pokemon2);
                 if (pokemon2.getPtDeVie() <= 0) {
                     pokemonGagnant = pokemon1;
-                    System.out.println("Le pokémon 2 est KO, Le pokémon 1 a gagné !");
+                    System.out.println(pokemon2.getPrenom() + " est mort à cause de l'effet de l'arène, "
+                            + pokemon1.getPrenom() + " a gagné !");
                     combatEnCours = false;
                 } else {
                     pokemon2.attaquePokemon(pokemon1);
                     if (pokemon1.getPtDeVie() <= 0) {
                         pokemonGagnant = pokemon2;
-                        System.out.println("Le pokémon 1 est KO, Le pokémon 2 a gagné !");
+                        System.out.println(pokemon1.getPrenom() + " est mort à cause de l'effet de l'arène, "
+                                + pokemon2.getPrenom() + " a gagné !");
                         combatEnCours = false;
                     }
 
@@ -103,13 +108,13 @@ public class Combat {
                 pokemon2.attaquePokemon(pokemon1);
                 if (pokemon1.getPtDeVie() <= 0) {
                     pokemonGagnant = pokemon2;
-                    System.out.println("Le pokémon 1 est KO, Le pokémon 2 a gagné !");
+                    System.out.println(pokemon1.getPrenom() + "est KO, " + pokemon2.getPrenom() + " a gagné !");
                     combatEnCours = false;
                 } else {
                     pokemon1.attaquePokemon(pokemon2);
                     if (pokemon2.getPtDeVie() <= 0) {
                         pokemonGagnant = pokemon1;
-                        System.out.println("Le pokémon 2 est KO, Le pokémon 1 a gagné !");
+                        System.out.println(pokemon2.getPrenom() + "est KO, " + pokemon1.getPrenom() + " a gagné !");
                         combatEnCours = false;
                     }
 
