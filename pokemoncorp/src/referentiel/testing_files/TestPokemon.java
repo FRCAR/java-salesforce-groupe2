@@ -23,6 +23,7 @@ public class TestPokemon {
 
         Pokemon monPokemon : listePokemons) {
             System.out.println(monPokemon.getPrenom());
+            System.out.println("mon pokemon appartient à la classe : " + monPokemon.getNomClass());
         }
     }
 
