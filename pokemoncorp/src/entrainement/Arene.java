@@ -2,6 +2,9 @@ package pokemoncorp.src.entrainement;
 
 import pokemoncorp.src.referentiel.Pokemon;
 
+/**
+ * Classe mère Arène 
+ */
 public abstract class Arene {
     protected final String nomClasse;
 
