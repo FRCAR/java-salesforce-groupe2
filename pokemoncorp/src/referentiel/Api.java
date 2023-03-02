@@ -10,20 +10,28 @@ public class Api {
      * - One pokemon by providing its Id
      * This api provides the possibilty to update a pokemon (add experience)
      */
-    private HashMap<Integer, Pokemon> mesPokemons = new HashMap<>() {
-        {
-            put(1, new Racaillou());
-            put(2, new Roucoul());
-            put(3, new Carapuce());
-            put(4, new Salameche());
-        }
-    };
+    private static HashMap<Integer, Pokemon> mesPokemons = new HashMap<>();
 
-    // Api Constructor with no parametrs
-    public Api() {
-
+    
+   
+    static{
+    // Initilaizing pokemons
+        Pokemon racaillouRoche = new Racaillou("Racaillou Roche");
+        Pokemon roucoulDodu = new Roucoul("Roucoul Dodu");
+        Pokemon carapuceTortue = new Roucoul("Carapuce Tortue");
+        Pokemon salamecheDragon = new Roucoul("Salamèche Dragon");
+    // Adding pokemons to the HashMap
+        mesPokemons.put(racaillouRoche.getId() , racaillouRoche);
+        mesPokemons.put(roucoulDodu.getId() , roucoulDodu);
+        mesPokemons.put(carapuceTortue.getId() , carapuceTortue);
+        mesPokemons.put(salamecheDragon.getId() , salamecheDragon);
     }
 
+    // Api Constructor with no parametrs
+
+    public Api() {
+    }
+    
     // Retrieving all pokemons
     public HashMap<Integer, Pokemon> getAllPokemon() {
         return mesPokemons;

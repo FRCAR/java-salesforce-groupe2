@@ -5,7 +5,7 @@ import pokemoncorp.src.referentiel.Pokemon;
 public class MareAcide extends Arene {
 
     public MareAcide(){
-        super("MareAcide");
+        super("Mare Acide");
     };
 
     @Override
@@ -16,6 +16,6 @@ public class MareAcide extends Arene {
     public void effetTourDeCombat(Pokemon pkA, Pokemon pkB){
         pkA.ajoutDegat(5);
         pkB.ajoutDegat(5);
-    }
+    };
 
 }

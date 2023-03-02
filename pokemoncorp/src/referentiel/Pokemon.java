@@ -2,9 +2,9 @@ package pokemoncorp.src.referentiel;
 
 public class Pokemon {
 
-    private int nbPokemonCrees = 0;
-    protected final int id;
-    protected final String nom;
+    private static int nbPokemonCrees = 0;
+    protected int id;
+    protected final String prenom;
     protected int experience;
     protected final int ptDeVieMax;
     protected int ptDeVie;
@@ -12,9 +12,9 @@ public class Pokemon {
     protected Attaque attaque;
 
     // constructeur de la classe Pokémon
-    public Pokemon(String nom, TypePokemon type, int ptVieMax, Attaque attaque) {
+    public Pokemon(String prenom, TypePokemon type, int ptVieMax, Attaque attaque) {
         this.id = nbPokemonCrees;
-        this.nom = nom;
+        this.prenom = prenom;
         this.type = type;
         this.ptDeVieMax = ptVieMax;
         this.ptDeVie = ptVieMax;
@@ -25,14 +25,15 @@ public class Pokemon {
 
     // définition de la métode qui incrémente le nombre de Pokémon crées
     public void incrementNbPokemonCrees() {
-        this.nbPokemonCrees++;
+        Pokemon.nbPokemonCrees++;
 
     }
 
-    // ic on calcule les dégats par attaque
+    // ic on calcule le modificateur de dégat par attaque
+    // A rajouter --> vérifictaion si degat>0 a voir dans simulation si on appel
+    // reset PointdeVie
     public void ajoutDegat(int degat) {
-        this.ptDeVie = this.ptDeVie - (degat / 100);
-        //this.ptDeVie non neg
+        this.ptDeVie = this.ptDeVie * Math.round(degat / 100);
     }
 
     // définition de la méthode attaquePokemon
@@ -40,8 +41,14 @@ public class Pokemon {
         pokemonCible.ajoutDegat(this.attaque.getBonus(pokemonCible.getType()));
     }
 
-    public String getNom() {
-        return nom;
+    // définition de la méthode qui permet de réinitialiser les points de vie de
+    // Pokémon
+    public void resetPdtVie() {
+        this.ptDeVie = ptDeVieMax;
+    }
+
+    public String getPrenom() {
+        return prenom;
     }
 
     public int getNbPokemonCrees() {
@@ -49,7 +56,7 @@ public class Pokemon {
     }
 
     public void setNbPokemonCrees(int nbPokemonCrees) {
-        this.nbPokemonCrees = nbPokemonCrees;
+        Pokemon.nbPokemonCrees = nbPokemonCrees;
     }
 
     public int getId() {
