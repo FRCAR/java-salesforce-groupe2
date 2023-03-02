@@ -12,7 +12,7 @@ public class Pokemon {
     protected Attaque attaque;
 
     // constructeur de la classe Pokémon
-    public Pokemon(int id, String nom, TypePokemon type, int ptVieMax, Attaque attaque) {
+    public Pokemon(String nom, TypePokemon type, int ptVieMax, Attaque attaque) {
         this.id = nbPokemonCrees;
         this.nom = nom;
         this.type = type;
