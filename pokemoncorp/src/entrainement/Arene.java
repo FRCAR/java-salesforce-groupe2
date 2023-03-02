@@ -1,16 +1,19 @@
 package pokemoncorp.src.entrainement;
 
 import pokemoncorp.src.referentiel.Pokemon;
-import pokemoncorp.src.referentiel.TypePokemon;
 
 public abstract class Arene {
-    protected final TypePokemon typePokemon;
+    protected final String nomClasse;
 
-    public TypePokemon getTypePokemon() {
-        return typePokemon;
-    };
+    public Arene(String nomClasse){
+        this.nomClasse = nomClasse;
+    }
 
-    public abstract void effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2);
+    public String getNomClasse() {
+        return nomClasse;
+    }
 
-    public abstract void effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2);
+    public abstract void effetDebutCombat(Pokemon pk1, Pokemon pk2);
+
+    public abstract void effetTourDeCombat(Pokemon pk1, Pokemon pk2);
 }
