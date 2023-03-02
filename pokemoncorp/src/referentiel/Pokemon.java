@@ -2,7 +2,7 @@ package pokemoncorp.src.referentiel;
 
 public class Pokemon {
 
-    private int nbPokemonCrees = 0;
+    private static int nbPokemonCrees = 0;
     protected static int id;
     protected final String prenom;
     protected int experience;
@@ -25,7 +25,7 @@ public class Pokemon {
 
     // définition de la métode qui incrémente le nombre de Pokémon crées
     public void incrementNbPokemonCrees() {
-        this.nbPokemonCrees++;
+        Pokemon.nbPokemonCrees++;
 
     }
 
@@ -56,7 +56,7 @@ public class Pokemon {
     }
 
     public void setNbPokemonCrees(int nbPokemonCrees) {
-        this.nbPokemonCrees = nbPokemonCrees;
+        Pokemon.nbPokemonCrees = nbPokemonCrees;
     }
 
     public static int getId() {
