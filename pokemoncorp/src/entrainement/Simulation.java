@@ -147,6 +147,7 @@ public class Simulation {
      * Affiche la liste des Arènes
      */
     private static void displayAllArene() {
+        System.out.println("\n-----------------------------------------------------------");
         System.out.println("Veuillez choisir une arène : ");
 
         for (Arene monArene : arenes) {
