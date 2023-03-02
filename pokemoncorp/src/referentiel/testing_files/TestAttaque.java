@@ -4,6 +4,7 @@ import pokemoncorp.src.referentiel.Battement;
 import pokemoncorp.src.referentiel.Ecrasement;
 import pokemoncorp.src.referentiel.Flameche;
 import pokemoncorp.src.referentiel.Plouf;
+import pokemoncorp.src.referentiel.Pokemon;
 import pokemoncorp.src.referentiel.TypePokemon;
 
 /**
@@ -22,6 +23,8 @@ public class TestAttaque {
         for (TypePokemon type : TypePokemon.values()) {
             System.out.println("Bonus vs " + type + " : " + testPlouf.getBonus(type));
         }
+
+        System.out.println(testPlouf.getNomClasse());
     }
 
 }
