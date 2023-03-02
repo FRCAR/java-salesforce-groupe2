@@ -2,6 +2,9 @@ package pokemoncorp.src.entrainement;
 
 import pokemoncorp.src.referentiel.Pokemon;
 
+/**
+ * Classe fille de Arène
+ */
 public class Volcan extends Arene {
 
     public Volcan(){
