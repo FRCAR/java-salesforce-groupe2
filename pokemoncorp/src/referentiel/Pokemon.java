@@ -32,12 +32,12 @@ public class Pokemon {
     // ic on calcule les dégats par attaque
     public void ajoutDegat(int degat) {
         this.ptDeVie = this.ptDeVie - (degat / 100);
+        //this.ptDeVie non neg
     }
 
     // définition de la méthode attaquePokemon
     public void attaquePokemon(Pokemon pokemonCible) {
         pokemonCible.ajoutDegat(this.attaque.getBonus(pokemonCible.getType()));
-
     }
 
     public String getNom() {

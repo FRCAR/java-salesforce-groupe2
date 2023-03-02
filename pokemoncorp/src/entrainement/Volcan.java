@@ -9,8 +9,9 @@ public class Volcan extends Arene {
     };
 
     @Override
-    public void effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2){
-        //perte de 20pts de vie
+    public void effetDebutCombat(Pokemon pkA, Pokemon pkB){
+        pkA.ajoutDegat(20);
+        pkB.ajoutDegat(20);
     }
 
     @Override
