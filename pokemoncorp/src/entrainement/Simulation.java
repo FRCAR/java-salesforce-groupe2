@@ -120,6 +120,7 @@ public class Simulation {
 
         System.out.println("Le Pokemon choisi s'appelle : " + lePokemon.getPrenom());
         System.out.println("Le Pokemon choisi est de type : " + lePokemon.getType());
+        System.out.println("Le Pokemon choisi est de l'espèce : " + lePokemon.getNomClass());
         System.out.println("Le Pokemon choisi a comme attaque : " + lePokemon.getAttaque().getNomClasse());
         System.out.println("Le Pokemon choisi a au maximum : " + lePokemon.getPtDeVieMax() + " HP");
         System.out.println("Le Pokemon choisi a : " + lePokemon.getExperience() + " XP");
@@ -152,7 +153,7 @@ public class Simulation {
     /**
      * Use API to get a pokemon via its ID given by the user
      * Null if ID is not a number, or an unknown ID
-     * 
+     *
      * @return the selected Pokemon
      */
     private static Pokemon getPokemonById() {
