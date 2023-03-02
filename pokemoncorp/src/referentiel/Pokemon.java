@@ -1,5 +1,7 @@
 package pokemoncorp.src.referentiel;
 
+import pokemoncorp.src.referentiel.Attaque;
+
 public class Pokemon {
 
     // déclataion des vartiables de la classe
@@ -51,6 +53,7 @@ public class Pokemon {
      */
 
     public void ajoutDegat(int degat) {
+
         this.ptDeVie = this.ptDeVie - degat;
     }
 
@@ -59,8 +62,10 @@ public class Pokemon {
      ** type attaque et de type Pokemon
      */
     public void attaquePokemon(Pokemon pokemonCible) {
-        pokemonCible.ajoutDegat(this.attaque.getBonus(pokemonCible.getType()));
-        System.out.println(this.prenom + " a infligé " + this.attaque.getBonus(pokemonCible.getType()) + " au Pokemon "
+        int degatTotaux = (int) ((double) this.attaque.getDegats() * (double) this.attaque.getBonus(this.getType())
+                / 100);
+        pokemonCible.ajoutDegat(degatTotaux);
+        System.out.println(this.prenom + " a infligé " + degatTotaux + " au Pokemon "
                 + pokemonCible.getPrenom());
     }
 
