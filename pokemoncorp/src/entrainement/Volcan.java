@@ -3,7 +3,8 @@ package pokemoncorp.src.entrainement;
 import pokemoncorp.src.referentiel.Pokemon;
 
 public abstract class Volcan extends Arene {
-    Volcan(){
+
+    public Volcan(){
 
     };
 

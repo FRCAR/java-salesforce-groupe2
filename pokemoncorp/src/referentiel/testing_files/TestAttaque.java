@@ -22,6 +22,8 @@ public class TestAttaque {
         for (TypePokemon type : TypePokemon.values()) {
             System.out.println("Bonus vs " + type + " : " + testPlouf.getBonus(type));
         }
+
+        System.out.println(testPlouf.getClass());
     }
 
 }

@@ -1,6 +1,10 @@
 package pokemoncorp.src.referentiel;
 
 public class Roucoul extends Pokemon {
-    Roucoul() {
+    public Roucoul() {
+        //initialisé points de vie max 
+        //type
+        //attaque
+        //appel avec un super
     }
 }

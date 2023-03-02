@@ -3,7 +3,8 @@ package pokemoncorp.src.entrainement;
 import pokemoncorp.src.referentiel.Pokemon;
 
 public abstract class MareAcide extends Arene {
-    MareAcide(){
+    
+    public MareAcide(){
 
     };
 
