@@ -172,6 +172,11 @@ public class Simulation {
             return;
         }
 
+        if (pokemon1 == pokemon2) {
+            System.out.println("On est pas dans Fight Club, merci.");
+            return;
+        }
+
         // choix Arene
         System.out.println("\n-----------------------------------------------------------");
         System.out.println("Veuillez choisir une arène parmi : ");
