@@ -2,8 +2,9 @@ package pokemoncorp.src.referentiel;
 
 public class Pokemon {
 
-    private int nbPokemonCrees;
+    private int nbPokemonCrees = 0;
     protected final int id;
+    protected final String nom;
     protected int experience;
     protected final int ptDeVieMax;
     protected int ptDeVie;
@@ -11,12 +12,15 @@ public class Pokemon {
     protected Attaque attaque;
 
     // constructeur de la classe Pokémon
-    public Pokemon(int id, TypePokemon type, int ptVieMax, Attaque attaque) {
-        this.id = id;
+    public Pokemon(String nom, TypePokemon type, int ptVieMax, Attaque attaque) {
+        this.id = nbPokemonCrees;
+        this.nom = nom;
         this.type = type;
         this.ptDeVieMax = ptVieMax;
         this.ptDeVie = ptVieMax;
         this.attaque = attaque;
+        incrementNbPokemonCrees();
+
     };
 
     // définition de la métode qui incrémente le nombre de Pokémon crées
@@ -25,9 +29,19 @@ public class Pokemon {
 
     }
 
+    // ic on calcule les dégats par attaque
+    public void ajoutDegat(int degat) {
+        this.ptDeVie = this.ptDeVie - (degat / 100);
+    }
+
     // définition de la méthode attaquePokemon
     public void attaquePokemon(Pokemon pokemonCible) {
+        pokemonCible.ajoutDegat(this.attaque.getBonus(pokemonCible.getType()));
 
+    }
+
+    public String getNom() {
+        return nom;
     }
 
     public int getNbPokemonCrees() {

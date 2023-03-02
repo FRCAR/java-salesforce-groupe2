@@ -99,7 +99,7 @@ package "pokemoncorp.src.referentiel"{
 	
 }
 
-package "pokemoncorp.src.module_entrainement"{
+package "pokemoncorp.src.entrainement"{
 
 	class Simulation{
 	
