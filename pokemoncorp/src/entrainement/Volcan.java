@@ -7,15 +7,15 @@ import pokemoncorp.src.referentiel.Pokemon;
  */
 public class Volcan extends Arene {
 
-    public Volcan(){
+    public Volcan() {
         super("Volcan");
     };
 
     @Override
-    public void effetDebutCombat(Pokemon pkA, Pokemon pkB){
+    public void effetDebutCombat(Pokemon pkA, Pokemon pkB) {
         pkA.ajoutDegat(20);
         pkB.ajoutDegat(20);
-        System.out.println("L'arène Mare Acide inflige 20 points de dégats à tous les Pokémon !");
+        System.out.println("L'arène Volcan inflige 20 points de dégats à tous les Pokémon !");
     }
 
     @Override
