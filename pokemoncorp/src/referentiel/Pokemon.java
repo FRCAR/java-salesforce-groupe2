@@ -37,7 +37,6 @@ public class Pokemon {
     // définition de la méthode attaquePokemon
     public void attaquePokemon(Pokemon pokemonCible) {
         pokemonCible.ajoutDegat(this.attaque.getBonus(pokemonCible.getType()));
-
     }
 
     // définition de la méthode qui permet de réinitialiser les points de vie de

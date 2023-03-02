@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 import pokemoncorp.src.referentiel.Api;
+import pokemoncorp.src.referentiel.Pokemon;
 
 public class Simulation {
 
@@ -16,9 +17,9 @@ public class Simulation {
         api = new Api();
 
         // initialisations des arènes
-        // arenes.add(new Volcan());
-        // arenes.add(new Prairie());
-        // arenes.add(new MareAcide());
+        arenes.add(new Volcan());
+        arenes.add(new Prairie());
+        arenes.add(new MareAcide());
 
         System.out.println("\nBienvenue sur le module d'entraînement de pokémons !");
         System.out.println("(merci de ne pas prévenir les avocats de Nintendo)");
@@ -96,7 +97,41 @@ public class Simulation {
 
     }
 
+    /**
+     * Affiche les détails d'un pokemon, choisi par son id
+     * WIP
+     */
     private static void displayPokemonByID() {
+        System.out.println("\n-----------------------------------------------------------");
+        System.out.println("Affichage d'un pokemon : ");
+
+        // Récupération de l'ID choisie par l'utilisateur
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Veuillez entrer l'ID du pokemon choisi : ");
+        int id = 0;
+        if (scan.hasNextInt()) {
+            id = scan.nextInt();
+        } else {
+            System.out.println("L'ID entré doit être un nombre.");
+            scan.close();
+            return;
+        }
+        scan.close();
+
+        // Vérification de l'existence d'un pokemon avec cet ID
+        if (!api.getAllPokemon().containsKey(id)) {
+            System.out.println("Aucun pokemon ne correspond à l'ID : " + id);
+            return;
+        }
+
+        // On récupère le pokemon et on affiche ses attributs
+        Pokemon lePokemon = api.getPokemonByID(id);
+
+        System.out.println("Le Pokemon choisi s'appelle : " + lePokemon.getNom());
+        System.out.println("Le Pokemon choisi est de type : " + lePokemon.getType());
+        System.out.println("Le Pokemon choisi a comme attaque : " + lePokemon.getAttaque().getNomClasse());
+        System.out.println("Le Pokemon choisi a au maximum : " + lePokemon.getPtDeVieMax() + " HP");
+        System.out.println("Le Pokemon choisi a : " + lePokemon.getExperience() + " XP");
 
     }
 
