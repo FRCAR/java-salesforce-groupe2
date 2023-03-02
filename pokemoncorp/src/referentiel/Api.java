@@ -12,24 +12,26 @@ public class Api {
      */
     private static HashMap<Integer, Pokemon> mesPokemons = new HashMap<>();
 
-    static {
-        // Initilaizing pokemons
+    
+   
+    static{
+    // Initilaizing pokemons
         Pokemon racaillouRoche = new Racaillou("Racaillou Roche");
         Pokemon roucoulDodu = new Roucoul("Roucoul Dodu");
         Pokemon carapuceTortue = new Roucoul("Carapuce Tortue");
         Pokemon salamecheDragon = new Roucoul("Salamèche Dragon");
-        // Adding pokemons to the HashMap
-        mesPokemons.put(racaillouRoche.getId(), racaillouRoche);
-        mesPokemons.put(roucoulDodu.getId(), roucoulDodu);
-        mesPokemons.put(carapuceTortue.getId(), carapuceTortue);
-        mesPokemons.put(salamecheDragon.getId(), salamecheDragon);
+    // Adding pokemons to the HashMap
+        mesPokemons.put(racaillouRoche.getId() , racaillouRoche);
+        mesPokemons.put(roucoulDodu.getId() , roucoulDodu);
+        mesPokemons.put(carapuceTortue.getId() , carapuceTortue);
+        mesPokemons.put(salamecheDragon.getId() , salamecheDragon);
     }
 
     // Api Constructor with no parametrs
 
     public Api() {
     }
-
+    
     // Retrieving all pokemons
     public HashMap<Integer, Pokemon> getAllPokemon() {
         return mesPokemons;

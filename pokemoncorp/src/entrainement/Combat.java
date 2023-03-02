@@ -35,42 +35,55 @@ public class Combat {
 
     }
 
-    public void lancerCombat() {
+    public int lancerCombat() {
+        int idGagant = 0;       
+
         boolean combatEnCours = true;
         while (combatEnCours) {
-            // Le combat commence
+            // Le combat commence 
             if (tourDeCombat()) {
+                // Cas ou le pokemon 1 est choisi aléatoirement pour attaquer en premier
+                
                 pokemon1.attaquePokemon(pokemon2);
                 if (pokemon2.getPtDeVie() <= 0) {
+                    idGagant = 1;
                     System.out.println("Le pokémon 2 est KO, Le pokémon 1 a gagné !");
                     combatEnCours = false;
                 } else {
                     pokemon2.attaquePokemon(pokemon1);
                     if (pokemon1.getPtDeVie() <= 0) {
+                        idGagant = 2;
                         System.out.println("Le pokémon 1 est KO, Le pokémon 2 a gagné !");
                         combatEnCours = false;
                     }
 
                 }
 
-                // Prochain tour :
+                // Cas ou le pokemon 2 est choisi aléatoirement pour attaquer en premier
 
             } else {
                 pokemon2.attaquePokemon(pokemon1);
                 if (pokemon1.getPtDeVie() <= 0) {
+                    idGagant = 2;
                     System.out.println("Le pokémon 1 est KO, Le pokémon 2 a gagné !");
                     combatEnCours = false;
                 } else {
                     pokemon1.attaquePokemon(pokemon2);
                     if (pokemon2.getPtDeVie() <= 0) {
+                        idGagant = 1;
                         System.out.println("Le pokémon 2 est KO, Le pokémon 1 a gagné !");
                         combatEnCours = false;
                     }
-
+                    
                 }
+
 
             }
 
         }
-    }
+    
+        return idGagant;
+    }   
+            
+            
 }
