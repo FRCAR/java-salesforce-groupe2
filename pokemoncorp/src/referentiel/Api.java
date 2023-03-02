@@ -18,8 +18,8 @@ public class Api {
     // Initilaizing pokemons
         Pokemon racaillouRoche = new Racaillou("Racaillou Roche");
         Pokemon roucoulDodu = new Roucoul("Roucoul Dodu");
-        Pokemon carapuceTortue = new Roucoul("Carapuce Tortue");
-        Pokemon salamecheDragon = new Roucoul("Salamèche Dragon");
+        Pokemon carapuceTortue = new Carapuce("Carapuce Tortue");
+        Pokemon salamecheDragon = new Salameche("Salamèche Dragon");
     // Adding pokemons to the HashMap
         mesPokemons.put(racaillouRoche.getId() , racaillouRoche);
         mesPokemons.put(roucoulDodu.getId() , roucoulDodu);
@@ -46,7 +46,6 @@ public class Api {
     // Adding experience to a specific Pokemon
     public void updatePokemon(Pokemon pokemon, int addedExperience) {
         pokemon.setExperience(pokemon.getExperience() + addedExperience);
-        mesPokemons.replace(pokemon.getId(), pokemon);
     }
 
 }
