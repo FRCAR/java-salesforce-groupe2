@@ -111,7 +111,7 @@ public class Simulation {
                 .values()
                 .stream()
                 .sorted(Comparator.comparingInt(Pokemon::getExperience)
-                .reversed())
+                        .reversed())
                 .forEach(poke -> {
                     System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getPrenom() + " / Experience : "
                             + poke.getExperience());
