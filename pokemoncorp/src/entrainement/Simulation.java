@@ -24,6 +24,8 @@ public class Simulation {
         System.out.println("\nBienvenue sur le module d'entraînement de pokémons !");
         System.out.println("(merci de ne pas prévenir les avocats de Nintendo)");
 
+        Scanner scan = new Scanner(System.in);
+
         mainLoop: while (true) {
             // Affichage des options
             System.out.println("\n-----------------------------------------------------------");
@@ -36,13 +38,11 @@ public class Simulation {
             System.out.println("6. Quitter ce magnifique module :'(");
 
             // récupération du choix
-            Scanner scan = new Scanner(System.in);
             System.out.print("Votre choix : ");
             int option = 0;
             if (scan.hasNextInt()) {
                 option = scan.nextInt();
             }
-            scan.close();
 
             // Vérification du choix
             if (option < 1 || option > 6) {
@@ -74,6 +74,8 @@ public class Simulation {
             }
 
         }
+
+        scan.close();
 
     }
 
@@ -113,10 +115,8 @@ public class Simulation {
             id = scan.nextInt();
         } else {
             System.out.println("L'ID entré doit être un nombre.");
-            scan.close();
             return;
         }
-        scan.close();
 
         // Vérification de l'existence d'un pokemon avec cet ID
         if (!api.getAllPokemon().containsKey(id)) {
