@@ -124,7 +124,7 @@ public class Simulation {
             return;
         }
 
-        //
+        // On récupère le pokemon et on affiche ses attributs
         Pokemon lePokemon = api.getPokemonByID(id);
 
         System.out.println("Le Pokemon choisi s'appelle : " + lePokemon.getNom());
