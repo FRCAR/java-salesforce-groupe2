@@ -14,7 +14,7 @@ package "pokemoncorp.src.referentiel"{
 	abstract Pokemon{
 		- {static} nbPokemonCrees : int
 		# id : final int
-		# nom : final String
+		# prenom : final String
 		# type : final TypePokemon
 		# experience : int
 		# ptDeVieMax : final int
@@ -24,8 +24,9 @@ package "pokemoncorp.src.referentiel"{
 		
 		# {static} incrementNbPokemonCrees() : void
 		+ {static} getNbPokemonCrees() : int
+		+ Pokemon(String prenom, TypePokemon type, int ptVieMax, Attaque attaque)
 		+ getId() : int
-		+ getNom() : String
+		+ getPrenom() : String
 		+ getType() : TypePokemon
 		+ getExperience() : int
 		~ setExperience(int experience) : void
@@ -40,22 +41,22 @@ package "pokemoncorp.src.referentiel"{
 
 	class Salameche{
 	
-		~ Salameche(String Nom)
+		~ Salameche(String Prenom)
 	}
 
 	class Racaillou{
 		
-		~ Racaillou(String Nom)
+		~ Racaillou(String Prenom)
 	}
 
 	class Roucoul{
 	
-		~Roucoul(String Nom)
+		~Roucoul(String Prenom)
 	}
 
 	class Carapuce{
 
-		~Carapuce(String Nom)
+		~Carapuce(String Prenom)
 	}
 
 	abstract Attaque{
