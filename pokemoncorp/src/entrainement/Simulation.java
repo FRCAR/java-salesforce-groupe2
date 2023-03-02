@@ -1,5 +1,6 @@
 package pokemoncorp.src.entrainement;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -112,6 +113,7 @@ public class Simulation {
         api.getAllPokemon()
                 .values()
                 .stream()
+                .sorted(Comparator.comparingInt(Pokemon::getExperience))
                 .forEach(poke -> {
                     System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getPrenom() + " / Experience : " + poke.getExperience());
                 });

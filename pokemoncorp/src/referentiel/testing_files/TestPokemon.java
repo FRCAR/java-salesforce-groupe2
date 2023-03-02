@@ -20,7 +20,6 @@ public class TestPokemon {
 
         Set<Pokemon> listePokemons = new HashSet<Pokemon>();
         listePokemons.add(new Racaillou("Rattata"));
-        listePokemons.add(new Racaillou("Rattata"));
         listePokemons.add(new Roucoul("Pidgey"));
         listePokemons.add(new Carapuce("Raticate"));
         listePokemons.add(new Salameche("Kakuna"));
