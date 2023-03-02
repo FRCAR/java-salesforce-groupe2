@@ -4,6 +4,7 @@ public class Pokemon {
 
     private static int nbPokemonCrees = 0;
     protected int id;
+    protected String nomClass;
     protected final String prenom;
     protected int experience;
     protected final int ptDeVieMax;
@@ -11,10 +12,19 @@ public class Pokemon {
     protected final TypePokemon type;
     protected Attaque attaque;
 
+    public String getNomClass() {
+        return nomClass;
+    }
+
+    public void setNomClass(String nomClass) {
+        this.nomClass = nomClass;
+    }
+
     // constructeur de la classe Pokémon
-    public Pokemon(String prenom, TypePokemon type, int ptVieMax, Attaque attaque) {
+    public Pokemon(String prenom, String nomClass, TypePokemon type, int ptVieMax, Attaque attaque) {
         this.id = nbPokemonCrees;
         this.prenom = prenom;
+        this.nomClass = nomClass;
         this.type = type;
         this.ptDeVieMax = ptVieMax;
         this.ptDeVie = ptVieMax;
