@@ -105,8 +105,8 @@ package "pokemoncorp.src.module_entrainement"{
 	
 		+ {static} main() : void
 		- {static} displayAllPokemon() : void
-		- {static} displayAllPokemonSortedByXP(boolean croissant) : void
-		- {static} displayPokemonByID(int id) : void
+		- {static} displayAllPokemonSortedByXP() : void
+		- {static} displayPokemonByID() : void
 		- {static} displayAllArene() : void
 		- {static} lancerUnCombat() : void
 	}

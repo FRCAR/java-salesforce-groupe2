@@ -4,7 +4,6 @@ import pokemoncorp.src.referentiel.Battement;
 import pokemoncorp.src.referentiel.Ecrasement;
 import pokemoncorp.src.referentiel.Flameche;
 import pokemoncorp.src.referentiel.Plouf;
-import pokemoncorp.src.referentiel.Pokemon;
 import pokemoncorp.src.referentiel.TypePokemon;
 
 /**
