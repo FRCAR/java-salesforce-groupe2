@@ -20,6 +20,7 @@ package "pokemoncorp.src.referentiel"{
 		# ptDeVieMax : final int
 		# ptDeVie : int
 		# attaque : final Attaque
+		# nomClasse : final String
 		
 		# {static} incrementNbPokemonCrees() : void
 		+ {static} getNbPokemonCrees() : int
@@ -32,6 +33,7 @@ package "pokemoncorp.src.referentiel"{
 		+ getptDeVieMax() : int
 		+ getptDeVie() : int
 		+ setptDeVie(int ptDeVie) : int
+		+ getNomClasse() : String
 		+ attaquePokemon(Pokemon pokemonCible) : void
 		
 	}
@@ -57,13 +59,18 @@ package "pokemoncorp.src.referentiel"{
 	}
 
 	abstract Attaque{
-		- {static} tableBonus : HashMap<TypePokemon, HashMap<TypePokemon,Integer>>
-		- type : final TypePokemon
-		- degats : final int
+		# {static} DEFAULT_BONUS : final int
+		# {static} tableBonus : HashMap<TypePokemon, HashMap<TypePokemon,Integer>>
+		# type : final TypePokemon
+		# degats : final int
+		# nomClasse : final String
 		
+		+ Attaque(int degats, TypePokemon type, String nomClasse)
 		+ getType() : TypePokemon
 		+ getDegats() : int
+		+ getNomClasse() : String
 		+ getBonus(TypePokemon typePokemonCible) : Integer
+		- getTableBonus() : HashMap<TypePokemon, HashMap<TypePokemon, Integer>>
 	}
 
 	class Plouf {
@@ -92,14 +99,14 @@ package "pokemoncorp.src.referentiel"{
 	
 }
 
-package "pokemoncorp.src.module_entrainement"{
+package "pokemoncorp.src.entrainement"{
 
 	class Simulation{
 	
 		+ {static} main() : void
 		- {static} displayAllPokemon() : void
-		- {static} displayAllPokemonSortedByXP(boolean croissant) : void
-		- {static} displayPokemonByID(int id) : void
+		- {static} displayAllPokemonSortedByXP() : void
+		- {static} displayPokemonByID() : void
 		- {static} displayAllArene() : void
 		- {static} lancerUnCombat() : void
 	}
@@ -118,7 +125,10 @@ package "pokemoncorp.src.module_entrainement"{
 	}
 
 	abstract Arene{
+		# nomClasse : final String
 		
+		+ Arene(String nomClasse)
+		+ getNomClasse() : String
 		+ {abstract} <<abstract>> effetDebutCombat(Pokemon pokemon1, Pokemon pokemon2) : void
 		+ {abstract} <<abstract>> effetTourDeCombat(Pokemon pokemon1, Pokemon pokemon2) : void
 	}

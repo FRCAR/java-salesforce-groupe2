@@ -1,6 +1,8 @@
 package pokemoncorp.src.referentiel;
 
 public class Carapuce extends Pokemon {
-    Carapuce() {
+
+    public Carapuce(){
+        super(1, TypePokemon.EAU, 100 , new Plouf());
     }
 }
