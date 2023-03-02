@@ -2,7 +2,7 @@ package pokemoncorp.src.referentiel;
 
 public class Pokemon {
 
-    private int nbPokemonCrees;
+    private int nbPokemonCrees = 0;
     protected final int id;
     protected final String nom;
     protected int experience;
