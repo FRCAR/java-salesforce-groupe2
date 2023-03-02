@@ -15,6 +15,7 @@ public class Volcan extends Arene {
     public void effetDebutCombat(Pokemon pkA, Pokemon pkB){
         pkA.ajoutDegat(20);
         pkB.ajoutDegat(20);
+        System.out.println("L'arène Mare Acide inflige 20 points de dégats à tous les Pokémon !");
     }
 
     @Override

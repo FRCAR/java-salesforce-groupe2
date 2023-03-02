@@ -19,6 +19,7 @@ public class MareAcide extends Arene {
     public void effetTourDeCombat(Pokemon pkA, Pokemon pkB){
         pkA.ajoutDegat(5);
         pkB.ajoutDegat(5);
+        System.out.println("L'arène Mare Acide inflige 5 points de dégats à tous les Pokémon !");
     };
 
 }
