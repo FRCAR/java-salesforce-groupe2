@@ -1,18 +1,16 @@
 package pokemoncorp.src.entrainement;
 
-import java.util.HashSet;
+import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.management.monitor.Monitor;
 
 import pokemoncorp.src.referentiel.Api;
 import pokemoncorp.src.referentiel.Pokemon;
 
-
 public class Simulation {
 
     private static Api api;
-    private static HashSet<Arene> arenes = new HashSet<>();
+    private static ArrayList<Arene> arenes = new ArrayList<>();
     private static Scanner scan;
 
     public static void main(String[] args) {
@@ -112,8 +110,10 @@ public class Simulation {
         api.getAllPokemon()
                 .values()
                 .stream()
+                .sorted(Comparator.comparingInt(Pokemon::getExperience))
                 .forEach(poke -> {
-                    System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getPrenom() + " / Experience : " + poke.getExperience());
+                    System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getPrenom() + " / Experience : "
+                            + poke.getExperience());
                 });
 
     }
@@ -170,6 +170,45 @@ public class Simulation {
         Pokemon pokemon2 = getPokemonById();
         if (pokemon2 == null) {
             return;
+        }
+
+        // choix Arene
+        System.out.println("\n-----------------------------------------------------------");
+        System.out.println("Veuillez choisir une arène parmi : ");
+        for (int i = 0; i < arenes.size(); i++) {
+            System.out.println(i + ". " + arenes.get(i).getNomClasse());
+        }
+        int numArene = 0;
+        System.out.print("Veuillez entrer le numéro de l'arène choisie : ");
+        if (scan.hasNextInt()) {
+            numArene = scan.nextInt();
+        } else {
+            System.out.println("L'ID entré doit être un nombre.");
+            scan.next();
+            return;
+        }
+
+        // Vérification de l'existence d'un pokemon avec cet ID
+        if (numArene < 0 || numArene > arenes.size() - 1) {
+            System.out.println("Aucune arène ne correspond à ce numéro : " + numArene);
+            return;
+        }
+
+        Arene arene = arenes.get(numArene);
+
+        Combat unCombat = new Combat(pokemon1, pokemon2, arene);
+        Pokemon vainqueur = unCombat.lancerCombat();
+        if (vainqueur != null) {
+            Pokemon loser = vainqueur == pokemon1 ? pokemon2 : pokemon1;
+            // calcul XP
+            int experience = loser.getExperience() / 3;
+            if (experience < 100) {
+                experience = 100;
+            }
+
+            System.out.println("Le vainqueur du combat, " + vainqueur.getPrenom()
+                    + " gagne " + experience + " XP !");
+            api.updatePokemon(vainqueur, experience);
         }
 
     }

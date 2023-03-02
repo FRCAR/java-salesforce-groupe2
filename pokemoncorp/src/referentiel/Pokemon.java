@@ -43,7 +43,7 @@ public class Pokemon {
     // A rajouter --> vérifictaion si degat>0 a voir dans simulation si on appel
     // reset PointdeVie
     public void ajoutDegat(int degat) {
-        this.ptDeVie = this.ptDeVie * Math.round(degat / 100);
+        this.ptDeVie = this.ptDeVie - degat;
     }
 
     // définition de la méthode attaquePokemon
