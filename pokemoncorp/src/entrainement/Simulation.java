@@ -2,10 +2,18 @@ package pokemoncorp.src.entrainement;
 
 import java.util.Scanner;
 
+import pokemoncorp.src.referentiel.Api;
+
 public class Simulation {
 
+    private static Api api;
+
     public static void main(String[] args) {
-        System.out.println("Bienvenue sur le module d'entraînement de pokémons !");
+
+        // initialisation API
+        api = new Api();
+
+        System.out.println("\nBienvenue sur le module d'entraînement de pokémons !");
         System.out.println("(merci de ne pas prévenir les avocats de Nintendo)");
 
         mainLoop: while (true) {
@@ -61,6 +69,9 @@ public class Simulation {
 
     }
 
+    /**
+     * Récupère tous les pokemons existants dans le référentiel via l'API
+     */
     private static void displayAllPokemon() {
 
     }
