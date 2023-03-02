@@ -4,7 +4,7 @@ public class Pokemon {
 
     private int nbPokemonCrees = 0;
     protected final int id;
-    protected final String nom;
+    protected final String prenom;
     protected int experience;
     protected final int ptDeVieMax;
     protected int ptDeVie;
@@ -12,9 +12,9 @@ public class Pokemon {
     protected Attaque attaque;
 
     // constructeur de la classe Pokémon
-    public Pokemon(String nom, TypePokemon type, int ptVieMax, Attaque attaque) {
+    public Pokemon(String prenom, TypePokemon type, int ptVieMax, Attaque attaque) {
         this.id = nbPokemonCrees;
-        this.nom = nom;
+        this.prenom = prenom;
         this.type = type;
         this.ptDeVieMax = ptVieMax;
         this.ptDeVie = ptVieMax;
@@ -29,9 +29,9 @@ public class Pokemon {
 
     }
 
-    // ic on calcule les dégats par attaque
+    // ic on calcule le modificateur de dégat par attaque
     public void ajoutDegat(int degat) {
-        this.ptDeVie = this.ptDeVie - (degat / 100);
+        this.ptDeVie = this.ptDeVie * (degat / 100);
     }
 
     // définition de la méthode attaquePokemon
@@ -40,8 +40,14 @@ public class Pokemon {
 
     }
 
-    public String getNom() {
-        return nom;
+    // définition de la méthode qui permet de réinitialiser les points de vie de
+    // Pokémon
+    public void resetPdtVie() {
+        this.ptDeVie = ptDeVieMax;
+    }
+
+    public String getPrenom() {
+        return prenom;
     }
 
     public int getNbPokemonCrees() {
