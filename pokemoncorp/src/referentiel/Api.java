@@ -19,7 +19,7 @@ public class Api {
         }
     };
 
-    // Api Constructor with no parametrs
+    // Api Constructor with no parameters
     Api() {
 
     }
