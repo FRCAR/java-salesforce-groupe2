@@ -13,7 +13,10 @@ public class Api {
     private static HashMap<Integer, Pokemon> mesPokemons = new HashMap<>();
 
     static {
-        // Initilaizing pokemons
+    /**
+     * this function is set first of all to create & intialize pokemons
+     * in the second part, we add the pokemons created to the HashMap
+     */
         Pokemon racaillouRoche = new Racaillou("Racaillou Roche");
         Pokemon roucoulDodu = new Roucoul("Roucoul Dodu");
         Pokemon carapuceTortue = new Carapuce("Carapuce Tortue");
@@ -25,23 +28,27 @@ public class Api {
         mesPokemons.put(salamecheDragon.getId(), salamecheDragon);
     }
 
-    // Api Constructor with no parametrs
-
-    public Api() {
-    }
-
-    // Retrieving all pokemons
+    /**
+     * @return all pokemons from the HashMap
+     */
     public HashMap<Integer, Pokemon> getAllPokemon() {
         return mesPokemons;
     }
 
-    // Retrieving one pokemon by Id
+    /**
+     * @param id
+     * @return one pokemon by its ID
+     */
     public Pokemon getPokemonByID(int id) {
         return mesPokemons.get((Integer) id);
 
     }
 
-    // Adding experience to a specific Pokemon
+
+    /**
+     * @param pokemon to get access to the Pokemon class
+     * @param addedExperience to the pokemons (combat result)
+     */
     public void updatePokemon(Pokemon pokemon, int addedExperience) {
         pokemon.setExperience(pokemon.getExperience() + addedExperience);
     }
