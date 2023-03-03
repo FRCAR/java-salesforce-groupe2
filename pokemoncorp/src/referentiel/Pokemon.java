@@ -2,7 +2,7 @@ package pokemoncorp.src.referentiel;
 
 import pokemoncorp.src.referentiel.Attaque;
 
-public class Pokemon {
+public abstract class Pokemon {
 
     // déclataion des vartiables de la classe
     private static int nbPokemonCrees = 0;

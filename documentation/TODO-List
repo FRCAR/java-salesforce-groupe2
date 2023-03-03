@@ -1,10 +1,12 @@
-- maj diagramme cas d'utilisations
-- maj diagramme de classe : actualiser
+- maj diagramme cas d'utilisations : Sanae
+- maj diagramme de classe : actualiser : Emile
+- visibilité : Emile
+- passer pokemon en abstract : Nathalie
+- mettre un petite exception ou deux : par exemple dans attaque à la place de default_value : Emile
+- meilleure mise en page dans la console : Sanae
+- étoffer la liste des pokemon : Nathalie
 
-- visibilité
-- passer pokemon en abstract
-- mettre un petite exception ou deux : par exemple dans attaque à la place de default_value
-- meilleure mise en page dans la console
-- étoffer la liste des pokemon
-
-- préparer un petit laïus sur SQL : MCD...
+SPRINT REVIEW
+- préparer un petit laïus sur SQL : MCD... : en groupe
+- retaper le powerpoint
+- retour de tout les collègues + et -
