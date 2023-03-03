@@ -2,6 +2,8 @@ package pokemoncorp.src.referentiel;
 
 import java.util.HashMap;
 
+import pokemoncorp.src.referentiel.exceptions.InvalidPokemonTypeException;
+
 /**
  * Abstract class. Children initializes degats and type.
  * Static attribute tableBonus stores the type weaknessed and strength
@@ -9,7 +11,6 @@ import java.util.HashMap;
  */
 public abstract class Attaque {
 
-    protected static final int DEFAULT_BONUS = 100;
     protected static final HashMap<TypePokemon, HashMap<TypePokemon, Integer>> tableBonus = new HashMap<TypePokemon, HashMap<TypePokemon, Integer>>();
     protected final TypePokemon type;
     protected final int degats;
@@ -72,13 +73,16 @@ public abstract class Attaque {
      * @param typePokemonCible : the TypePokemon of the targeted pokemon
      * @return bonus multiplier in percentage
      */
-    public int getBonus(TypePokemon typePokemonCible) {
+    public int getBonus(TypePokemon typePokemonCible) throws InvalidPokemonTypeException {
         if (getTableBonus().containsKey(this.type)) {
             if (getTableBonus().get(this.type).containsKey(typePokemonCible)) {
                 return getTableBonus().get(this.type).get(typePokemonCible);
             }
         }
-        return DEFAULT_BONUS;
+
+        throw new InvalidPokemonTypeException(
+                "Le couple " + this.type + " / " + typePokemonCible + " n'existe pas dans la table des bonus.");
+
     }
 
     private static HashMap<TypePokemon, HashMap<TypePokemon, Integer>> getTableBonus() {
