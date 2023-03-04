@@ -13,9 +13,9 @@ public abstract class Pokemon {
     protected final Attaque attaque;
     protected final String nomClass;
 
-    /*
+    /**
      * constructeur de la classe Pokémon qui doit prends des parametres et fait
-     ** appel à la métode qui autoincrémente le nombre de pokémon crées
+     * appel à la métode qui autoincrémente le nombre de pokémon crées
      */
     public Pokemon(String prenom, String nomClass, TypePokemon type, int ptVieMax, Attaque attaque) {
         this.id = nbPokemonCrees;
@@ -105,9 +105,9 @@ public abstract class Pokemon {
         return ptDeVie;
     }
 
-    /*
+    /**
      * définition de la méthode qui permet de réinitialiser les points de vie de
-     ** Pokémon avec ses points de vie max initiaux
+     * Pokémon avec ses points de vie max initiaux
      */
     public void resetPdtVie() {
         this.ptDeVie = ptDeVieMax;
@@ -120,8 +120,8 @@ public abstract class Pokemon {
         return nomClass;
     }
 
-    /*
-     * / ic on calcule le modificateur de dégat par type attaque
+    /**
+     * ici on calcule le modificateur de dégat par type attaque
      * et on initialise les points de vie par cette valeur
      */
     public void ajoutDegat(int degat) {
@@ -129,9 +129,9 @@ public abstract class Pokemon {
         this.ptDeVie = this.ptDeVie - degat;
     }
 
-    /*
+    /**
      * définition de la méthode attaquePokemon qui calcul le bonus en fonction du
-     ** type attaque et de type Pokemon
+     * type attaque et de type Pokemon
      */
     public void attaquePokemon(Pokemon pokemonCible) {
         int degatTotaux = (int) ((double) this.attaque.getDegats() * (double) this.attaque.getBonus(this.getType())
