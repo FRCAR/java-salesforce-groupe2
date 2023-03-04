@@ -47,7 +47,11 @@ public abstract class Attaque {
         tableBonus.get(TypePokemon.FEU).put(TypePokemon.FEU, 100);
     }
 
-    public Attaque(int degats, TypePokemon type, String nomClasse) {
+    private static HashMap<TypePokemon, HashMap<TypePokemon, Integer>> getTableBonus() {
+        return tableBonus;
+    }
+
+    Attaque(int degats, TypePokemon type, String nomClasse) {
         this.degats = degats;
         this.type = type;
         this.nomClasse = nomClasse;
@@ -83,10 +87,6 @@ public abstract class Attaque {
         throw new InvalidPokemonTypeException(
                 "Le couple " + this.type + " / " + typePokemonCible + " n'existe pas dans la table des bonus.");
 
-    }
-
-    private static HashMap<TypePokemon, HashMap<TypePokemon, Integer>> getTableBonus() {
-        return tableBonus;
     }
 
 }

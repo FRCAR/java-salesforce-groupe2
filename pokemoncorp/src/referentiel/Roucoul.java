@@ -3,10 +3,10 @@ package pokemoncorp.src.referentiel;
 public class Roucoul extends Pokemon {
 
     /**
-     * Création d'un nouveau Pokemon 
+     * Création d'un nouveau Pokemon
      * avec le constructeur de la clase mère Pokemon
      */
-    public Roucoul(String prenom) {
+    Roucoul(String prenom) {
         super(prenom, "Roucoul", TypePokemon.AIR, 90, new Battement());
     }
 }

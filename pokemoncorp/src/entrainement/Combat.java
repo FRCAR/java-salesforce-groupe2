@@ -14,7 +14,7 @@ public class Combat {
     /*
      * fonction qui choisi aléatoirement quel pokemon joueuera en premier
      */
-    public boolean tourDeCombat() {
+    private boolean tourDeCombat() {
         this.tourDeCombat = Math.random() > 0.5;
         return this.tourDeCombat;
     }
@@ -38,9 +38,9 @@ public class Combat {
     }
 
     // construction de combat sans paramètres
-    public Combat() {
+    // public Combat() {
 
-    }
+    // }
 
     /**
      * @return "pokemon1" si pokemon 1 gagne

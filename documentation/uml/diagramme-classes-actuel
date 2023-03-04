@@ -3,10 +3,10 @@
 package "pokemoncorp.src.referentiel"{
 
 	class API {
-		- pokemons : HashMap<Integer,Pokemon>
+		- {static} pokemons : HashMap<Integer,Pokemon>
 		
 		+ API()
-		+ getAllPokemon() : HashMap<Pokemon>
+		+ getAllPokemon() : HashMap<Integer, Pokemon>
 		+ getPokemonByID(int id) : Pokemon
 		+ updatePokemon(Pokemon pokemon, int addedExperience) : void
 	}
@@ -22,9 +22,10 @@ package "pokemoncorp.src.referentiel"{
 		# attaque : final Attaque
 		# nomClasse : final String
 		
-		# {static} incrementNbPokemonCrees() : void
-		+ {static} getNbPokemonCrees() : int
-		+ Pokemon(String prenom, TypePokemon type, int ptVieMax, Attaque attaque)
+		+ getNbPokemonCrees() : int
+		- setNbPokemonCrees(int nbPokemonCrees) :void
+		- incrementNbPokemonCrees() : void
+		+ Pokemon(String prenom, String nomClass, TypePokemon type, int ptVieMax, Attaque attaque)
 		+ getId() : int
 		+ getPrenom() : String
 		+ getType() : TypePokemon
@@ -34,7 +35,9 @@ package "pokemoncorp.src.referentiel"{
 		+ getptDeVieMax() : int
 		+ getptDeVie() : int
 		+ setptDeVie(int ptDeVie) : int
+		+ resetPdtVie() : void
 		+ getNomClasse() : String
+		+ ajoutDegat(int degat) : void
 		+ attaquePokemon(Pokemon pokemonCible) : void
 		
 	}
@@ -60,18 +63,17 @@ package "pokemoncorp.src.referentiel"{
 	}
 
 	abstract Attaque{
-		# {static} DEFAULT_BONUS : final int
-		# {static} tableBonus : HashMap<TypePokemon, HashMap<TypePokemon,Integer>>
+		# {static} tableBonus : final HashMap<TypePokemon, HashMap<TypePokemon,Integer>>
 		# type : final TypePokemon
 		# degats : final int
 		# nomClasse : final String
 		
-		+ Attaque(int degats, TypePokemon type, String nomClasse)
+		- {static} getTableBonus() : HashMap<TypePokemon, HashMap<TypePokemon, Integer>>
+		~ Attaque(int degats, TypePokemon type, String nomClasse)
 		+ getType() : TypePokemon
 		+ getDegats() : int
 		+ getNomClasse() : String
-		+ getBonus(TypePokemon typePokemonCible) : Integer
-		- getTableBonus() : HashMap<TypePokemon, HashMap<TypePokemon, Integer>>
+		+ getBonus(TypePokemon typePokemonCible) : int
 	}
 
 	class Plouf {
@@ -114,17 +116,14 @@ package "pokemoncorp.src.entrainement"{
 	}
 	
 	class Combat{
-		- final pokemon1 : Pokemon
-		- final pokemon2 : Pokemon
-		- final arene : Arene
 		- boolean tourDeCombat
 	
 		+ Combat(Pokemon pokemon1, Pokemon pokemon2, Arene arene)
 		+ getpokemon1() : Pokemon
 		+ getpokemon2() : Pokemon
 		+ getArene() : Arene
-		+ lancerCombat() : void
-		+ tourDeCombat() : boolean
+		+ lancerCombat() : Pokemon
+		- tourDeCombat() : boolean
 	}
 
 	abstract Arene{
@@ -168,7 +167,7 @@ Attaque <|-- Plouf
 Attaque <|-- Flameche
 Attaque <|-- Battement
 Attaque <|-- Ecrasement
-Pokemon *--> Attaque
+Pokemon *--> "1..1" Attaque
 
 TypePokemon "1..1" <--o Attaque
 TypePokemon "1..1" <--o Pokemon

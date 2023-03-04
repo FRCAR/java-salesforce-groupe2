@@ -3,10 +3,10 @@ package pokemoncorp.src.referentiel;
 public class Carapuce extends Pokemon {
 
     /**
-     * Création d'un nouveau Pokemon 
+     * Création d'un nouveau Pokemon
      * avec le constructeur de la clase mère Pokemon
      */
-    public Carapuce(String prenom) {
+    Carapuce(String prenom) {
         super(prenom, "Carapuce", TypePokemon.EAU, 100, new Plouf());
     }
 }
