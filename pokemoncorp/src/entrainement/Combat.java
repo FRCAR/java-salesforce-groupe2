@@ -51,16 +51,6 @@ public class Combat {
         this.arene = arene;
     }
 
-<<<<<<< HEAD
-    // Constructor with no parameters
-    public Combat() {
-=======
-    // construction de combat sans paramètres
-    // public Combat() {
->>>>>>> c9c71f27b27109c513feb3d3be2159d14ed0b5da
-
-    // }
-
     /**
      * @return to Simulation Pokemon 1 if pokemon 1 wins
      * @return to Simulation Pokemon 2 if pokemon 2 wins
