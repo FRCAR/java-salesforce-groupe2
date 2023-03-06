@@ -190,8 +190,7 @@ public class Simulation {
 
         // choix Arene
         System.out.println("\n-----------------------------------------------------------");
-        Log.i("Veuillez choisir une arène parmi : \n");
-        System.out.println("\n-----------------------------------------------------------");
+        Log.i("Veuillez choisir une arène parmi : ");
         for (int i = 0; i < arenes.size(); i++) {
             System.out.println(i + ". " + arenes.get(i).getNomClasse());
         }
@@ -212,6 +211,7 @@ public class Simulation {
         }
 
         Arene arene = arenes.get(numArene);
+        System.out.println("\n-----------------------------------------------------------");
 
         // On lance le combat
         Combat unCombat = new Combat(pokemon1, pokemon2, arene);
