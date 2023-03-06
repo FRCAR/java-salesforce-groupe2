@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import pokemoncorp.src.console.Log;
 import pokemoncorp.src.referentiel.Api;
 import pokemoncorp.src.referentiel.Pokemon;
 
@@ -25,22 +26,22 @@ public class Simulation {
         arenes.add(new Prairie());
         arenes.add(new MareAcide());
 
-        System.out.println("\nBienvenue sur le module d'entraînement de pokémons !");
-        System.out.println("(merci de ne pas prévenir les avocats de Nintendo)");
+        Log.w("\n\nBienvenue sur le module d'entraînement de pokémons !\n");
+        Log.w("(merci de ne pas prévenir les avocats de Nintendo)");
 
         mainLoop: while (true) {
             // Affichage des options
             System.out.println("\n-----------------------------------------------------------");
-            System.out.println("Veuillez entrez un nombre correspondant à l'option choisie :");
+            Log.i("Veuillez entrez un nombre correspondant à l'option choisie :\n");
             System.out.println("1. Afficher tous les pokemons");
             System.out.println("2. Afficher tous les pokemons triés par niveau d'expérience");
-            System.out.println("3. Afficher un pokemon grace à son ID");
+            System.out.println("3. Afficher un pokemon grâce à son ID");
             System.out.println("4. Afficher toutes les arènes");
-            System.out.println("5. Lancer un combat de pokemons");
+            System.out.println("5. Lancer un combat de Pokémons");
             System.out.println("6. Quitter ce magnifique module :'(");
 
             // récupération du choix
-            System.out.print("Votre choix : ");
+            Log.ch("\nVotre choix : ");
             int option = 0;
             if (scan.hasNextInt()) {
                 option = scan.nextInt();
@@ -50,7 +51,7 @@ public class Simulation {
 
             // Vérification du choix
             if (option < 1 || option > 6) {
-                System.out.println("Veuillez entrer un nombre entre 1 et 5.");
+                Log.e("Valeur invalide ! Veuillez entrer un nombre entre 1 et 6");
                 continue;
             }
 
@@ -72,7 +73,7 @@ public class Simulation {
                     lancerUnCombat();
                 }
                 case (6) -> {
-                    System.out.println("Ciao !");
+                    Log.w("\nCiao !");
                     break mainLoop;
                 }
             }
@@ -89,12 +90,12 @@ public class Simulation {
      */
     private static void displayAllPokemon() {
         System.out.println("\n-----------------------------------------------------------");
-        System.out.println("Affichage de tous les pokemons (id et nom) : ");
+        Log.i("Affichage de tous les pokemons (id et nom) : \n");
         api.getAllPokemon()
                 .values()
                 .stream()
                 .forEach(poke -> {
-                    System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getPrenom());
+                    System.out.println("ID : " + poke.getId() + " | Nom : " + poke.getPrenom());
                 });
 
     }
@@ -106,14 +107,14 @@ public class Simulation {
      */
     private static void displayAllPokemonSortedByXP() {
         System.out.println("\n-----------------------------------------------------------");
-        System.out.println("Affichage de tous les pokemons (id et nom) triés par expérience : ");
+        Log.i("Affichage de tous les pokemons (id et nom) triés par expérience : \n");
         api.getAllPokemon()
                 .values()
                 .stream()
                 .sorted(Comparator.comparingInt(Pokemon::getExperience)
                         .reversed())
                 .forEach(poke -> {
-                    System.out.println("ID : " + poke.getId() + " / Nom : " + poke.getPrenom() + " / Experience : "
+                    System.out.println("ID : " + poke.getId() + " | Nom : " + poke.getPrenom() + " | Experience : "
                             + poke.getExperience());
                 });
 
@@ -124,22 +125,23 @@ public class Simulation {
      */
     private static void displayPokemonByID() {
         System.out.println("\n-----------------------------------------------------------");
-        System.out.println("Affichage d'un pokemon : ");
+        Log.i("Affichage d'un Pokémon : \n");
 
         // Récupération de l'ID choisie par l'utilisateur
-        System.out.print("Veuillez entrer l'ID du pokemon choisi : ");
+        Log.ch("Veuillez entrer l'ID du Pokémon choisi : ");
         Pokemon lePokemon = getPokemonById();
         if (lePokemon == null) {
             return;
         }
 
         // On affiche ses attributs
-        System.out.println("Le Pokemon choisi s'appelle : " + lePokemon.getPrenom());
-        System.out.println("Le Pokemon choisi est de type : " + lePokemon.getType());
-        System.out.println("Le Pokemon choisi est de l'espèce : " + lePokemon.getNomClass());
-        System.out.println("Le Pokemon choisi a comme attaque : " + lePokemon.getAttaque().getNomClasse());
-        System.out.println("Le Pokemon choisi a au maximum : " + lePokemon.getPtDeVieMax() + " HP");
-        System.out.println("Le Pokemon choisi a : " + lePokemon.getExperience() + " XP");
+        System.out.println("Le Pokémon choisi s'appelle : \u001B[36m" + lePokemon.getPrenom() + "\u001B[0m");
+        System.out.println("Le Pokémon choisi est de type : \u001B[36m" + lePokemon.getType() + "\u001B[0m");
+        System.out.println("Le Pokémon choisi est de l'espèce : \u001B[36m" + lePokemon.getNomClass() + "\u001B[0m");
+        System.out.println("Le Pokémon choisi a comme attaque : \u001B[36m" + lePokemon.getAttaque().getNomClasse()
+                + "\u001B[0m");
+        System.out.println("Le Pokémon choisi a au maximum : \u001B[36m" + lePokemon.getPtDeVieMax() + " HP\u001B[0m");
+        System.out.println("Le Pokémon choisi a : \u001B[36m" + lePokemon.getExperience() + " XP\u001B[0m");
 
     }
 
@@ -148,7 +150,7 @@ public class Simulation {
      */
     private static void displayAllArene() {
         System.out.println("\n-----------------------------------------------------------");
-        System.out.println("Affichage de toutes les arènes  disponibles : ");
+        Log.i("Affichage de toutes les arènes  disponibles : ");
 
         for (Arene monArene : arenes) {
             System.out.println(monArene.getNomClasse());
@@ -163,17 +165,18 @@ public class Simulation {
      * Le vainqueur gagne de l'expérience, via un appel de l'API.
      */
     private static void lancerUnCombat() {
-        System.out.println("\n-----------------------------------------------------------");
-        System.out.println("Combat de Pokemons ! ");
+        Log.w("\n-----------------------------------------------------------");
+        Log.w("Combat de Pokémons ! ");
+        Log.w("\n-----------------------------------------------------------");
 
         // Récupération des pokemons choisis par l'utilisateur
-        System.out.print("Veuillez entrer l'ID du premier pokemon choisi : ");
+        Log.ch("Veuillez entrer l'ID du premier Pokemon choisi : ");
         Pokemon pokemon1 = getPokemonById();
         if (pokemon1 == null) {
             return;
         }
 
-        System.out.print("Veuillez entrer l'ID du second pokemon choisi : ");
+        Log.ch("Veuillez entrer l'ID du second Pokemon choisi : ");
         Pokemon pokemon2 = getPokemonById();
         if (pokemon2 == null) {
             return;
@@ -181,29 +184,30 @@ public class Simulation {
 
         // Verification que les pokemon choisis sont distincts
         if (pokemon1 == pokemon2) {
-            System.out.println("On est pas dans Fight Club, merci.");
+            Log.e("On est pas dans Fight Club, merci.");
             return;
         }
 
         // choix Arene
         System.out.println("\n-----------------------------------------------------------");
-        System.out.println("Veuillez choisir une arène parmi : ");
+        Log.i("Veuillez choisir une arène parmi : \n");
+        System.out.println("\n-----------------------------------------------------------");
         for (int i = 0; i < arenes.size(); i++) {
             System.out.println(i + ". " + arenes.get(i).getNomClasse());
         }
         int numArene = 0;
-        System.out.print("Veuillez entrer le numéro de l'arène choisie : ");
+        Log.ch("\nVeuillez entrer le numéro de l'arène choisie : ");
         if (scan.hasNextInt()) {
             numArene = scan.nextInt();
         } else {
-            System.out.println("L'ID entré doit être un nombre.");
+            Log.e("L'ID entré doit être un nombre.");
             scan.next();
             return;
         }
 
         // Vérification de l'existence d'une arène avec ce numéro
         if (numArene < 0 || numArene > arenes.size() - 1) {
-            System.out.println("Aucune arène ne correspond à ce numéro : " + numArene);
+            Log.e("Aucune arène ne correspond à ce numéro : " + numArene);
             return;
         }
 
@@ -222,7 +226,7 @@ public class Simulation {
                 experience = 100; // minimum de 100
             }
 
-            System.out.println("Le vainqueur du combat, " + vainqueur.getPrenom()
+            Log.win("\nLe vainqueur du combat, " + vainqueur.getPrenom()
                     + " gagne " + experience + " XP !");
             // on met à jour le pokemon via l'API
             api.updatePokemon(vainqueur, experience);
@@ -241,14 +245,14 @@ public class Simulation {
         if (scan.hasNextInt()) {
             id = scan.nextInt();
         } else {
-            System.out.println("L'ID entré doit être un nombre.");
+            Log.e("L'ID entré doit être un nombre.");
             scan.next();
             return null;
         }
 
         // Vérification de l'existence d'un pokemon avec cet ID
         if (!api.getAllPokemon().containsKey(id)) {
-            System.out.println("Aucun pokemon ne correspond à l'ID : " + id);
+            Log.e("Aucun pokemon ne correspond à l'ID : " + id);
             return null;
         }
 
