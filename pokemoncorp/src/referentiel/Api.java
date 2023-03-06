@@ -17,15 +17,23 @@ public class Api {
      * this function is set first of all to create & intialize pokemons
      * in the second part, we add the pokemons created to the HashMap
      */
-        Pokemon racaillouRoche = new Racaillou("Racaillou Roche");
-        Pokemon roucoulDodu = new Roucoul("Roucoul Dodu");
-        Pokemon carapuceTortue = new Carapuce("Carapuce Tortue");
-        Pokemon salamecheDragon = new Salameche("Salamèche Dragon");
+        Pokemon pokemon1 = new Racaillou("Muscle");
+        Pokemon pokemon2 = new Roucoul("Windy");
+        Pokemon pokemon3 = new Carapuce("Caracara");
+        Pokemon pokemon4 = new Salameche("Salam");
+        Pokemon pokemon5 = new Racaillou("Rock");
+        Pokemon pokemon6 = new Roucoul("Ailes");
+        Pokemon pokemon7 = new Carapuce("Turtle");
+        Pokemon pokemon8 = new Salameche("Backfire");
         // Adding pokemons to the HashMap
-        mesPokemons.put(racaillouRoche.getId(), racaillouRoche);
-        mesPokemons.put(roucoulDodu.getId(), roucoulDodu);
-        mesPokemons.put(carapuceTortue.getId(), carapuceTortue);
-        mesPokemons.put(salamecheDragon.getId(), salamecheDragon);
+        mesPokemons.put(pokemon1.getId(), pokemon1);
+        mesPokemons.put(pokemon2.getId(), pokemon2);
+        mesPokemons.put(pokemon3.getId(), pokemon3);
+        mesPokemons.put(pokemon4.getId(), pokemon4);
+        mesPokemons.put(pokemon5.getId(), pokemon5);
+        mesPokemons.put(pokemon6.getId(), pokemon6);
+        mesPokemons.put(pokemon7.getId(), pokemon7);
+        mesPokemons.put(pokemon8.getId(), pokemon8);
     }
 
     /**
