@@ -1,7 +1,5 @@
 package pokemoncorp.src.referentiel;
 
-import pokemoncorp.src.console.Log;
-
 public abstract class Pokemon {
 
     // déclaration des vartiables de la classe
@@ -136,7 +134,8 @@ public abstract class Pokemon {
      * type attaque et de type Pokemon
      */
     public void attaquePokemon(Pokemon pokemonCible) {
-        int degatTotaux = (int) ((double) this.attaque.getDegats() * (double) this.attaque.getBonus(this.getType())
+        int degatTotaux = (int) ((double) this.attaque.getDegats()
+                * (double) this.attaque.getBonus(pokemonCible.getType())
                 / 100);
         pokemonCible.ajoutDegat(degatTotaux);
         System.out.println(this.prenom + " a infligé " + degatTotaux + " points de dégats au Pokémon "
