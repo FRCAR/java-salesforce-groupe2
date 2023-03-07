@@ -13,10 +13,10 @@ public class Api {
     private static HashMap<Integer, Pokemon> mesPokemons = new HashMap<>();
 
     static {
-    /**
-     * this function is set first of all to create & intialize pokemons
-     * in the second part, we add the pokemons created to the HashMap
-     */
+        /**
+         * this function is set first of all to create & intialize pokemons
+         * in the second part, we add the pokemons created to the HashMap
+         */
         Pokemon pokemon1 = new Racaillou("Muscle");
         Pokemon pokemon2 = new Roucoul("Windy");
         Pokemon pokemon3 = new Carapuce("Caracara");
@@ -47,14 +47,12 @@ public class Api {
      * @param id
      * @return one pokemon by its ID
      */
-    public Pokemon getPokemonByID(int id) {
-        return mesPokemons.get((Integer) id);
-
+    public Pokemon getPokemonByID(Integer id) {
+        return mesPokemons.get(id);
     }
 
-
     /**
-     * @param pokemon to get access to the Pokemon class
+     * @param pokemon         to get access to the Pokemon class
      * @param addedExperience to the pokemons (combat result)
      */
     public void updatePokemon(Pokemon pokemon, int addedExperience) {

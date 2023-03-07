@@ -31,16 +31,17 @@ public abstract class Pokemon {
     /**
      * get nombre de pokémons crées
      */
-    public int getNbPokemonCrees() {
+    public static int getNbPokemonCrees() {
         return nbPokemonCrees;
     }
 
     /**
      * mise à jour du nombre de Pokemon crées
+     * supprimé pour éviter une corruption du référentiel
      */
-    private void setNbPokemonCrees(int nbPokemonCrees) {
-        Pokemon.nbPokemonCrees = nbPokemonCrees;
-    }
+    // private void setNbPokemonCrees(int nbPokemonCrees) {
+    // Pokemon.nbPokemonCrees = nbPokemonCrees;
+    // }
 
     /**
      * définition de la métode qui incrémente le nombre de Pokémon crées
